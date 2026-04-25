@@ -1,321 +1,568 @@
 @font-face {
-    font-family: 'Omega UI';
-    src: url('assets/fonts/OmegaUIGeometric-Regular.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'Omega UI';
+  src: url('https://res.cloudinary.com/dn48h6rt6/image/upload/fonts/OmegaUIGeometric-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --page-padding: 10px;
+  --topbar-height: 52px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Omega UI', sans-serif; 
-    background-color: #fff;
-    color: #000;
-    line-height: 1.2;
-    padding: 10px;
-    -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: var(--page-padding);
+  font-family: 'Omega UI', sans-serif;
+  background-color: #fff;
+  color: #000;
+  line-height: 1.2;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-/* Общая настройка сетки для всех крупных блоков */
-.top-bar, 
-.container {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    align-items: start;
-    
-    /* Увеличиваем отступ еще больше, учитывая высоту шапки */
-    /* Теперь 200px или 250px даст тот самый эффект "воздуха" */
-    padding-top: 80px; 
-    
-    gap: 20px;
+img {
+  display: block;
+  max-width: 100%;
 }
 
-/* --- ВЕРХНЯЯ ПАНЕЛЬ (ШАПКА) --- */
+a {
+  color: inherit;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Общая 12-колоночная сетка */
+.container,
 .top-bar {
-    position: fixed;   /* Фиксируем вверху экрана */
-    top: 0;
-    left: 0;
-    width: 100%;       /* На всю ширину */
-    z-index: 1000;     /* Чтобы шапка была поверх всего остального */
-    background-color: #fff; /* Белый фон, чтобы текст под ней скрывался */
-    padding: 20px;     /* Внутренние отступы самой шапки */
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    font-size: 14px;
-    margin-bottom: 0;  /* С фиксированным позиционированием margin-bottom не работает */
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+
+/* Шапка */
+.top-bar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  min-height: var(--topbar-height);
+  background-color: #fff;
+  font-size: 14px;
 }
 
 .bio-en {
-    grid-column: 1 / 4; /* Колонки 1, 2, 3 */
+  grid-column: 1 / 4;
 }
 
 .bio-ru {
-    grid-column: 4 / 7; /* Колонки 5, 6, 7 */
+  grid-column: 4 / 8;
+  display: grid;
+  gap: 0;
 }
 
 .contacts {
-    grid-column: 9 / 13; /* Колонки 9, 10, 11, 12 */
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    margin-left: 10px;
+  grid-column: 9 / 13;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
 }
 
 .contacts a {
-    text-decoration: none;
-    color: #000;
+  text-decoration: none;
 }
 
-/* --- ОСНОВНОЙ КОНТЕНТ (ПРОЕКТЫ И ИМЯ) --- */
+/* Главный первый экран */
+.hero-section {
+  position: relative;
+  padding-top: 0px;
+  margin-top: 20px;
+  align-items: start;
+  min-height: 610px;
+}
+
+.projects,
+.hero-name {
+  align-self: start;
+  grid-row: 1;
+}
+
 .projects {
-    grid-column: 1 / 4; /* Список проектов слева (1-3 колонки) */
+  grid-column: 1 / 5;
+  position: relative;
+  z-index: 3;
 }
 
 h1 {
-    font-size: 44px;
-    font-weight: normal;
-    margin-bottom: 40px;
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-    line-height: 0.95;
+  margin: 0 0 40px;
+  font-size: 44px;
+  font-weight: normal;
+  line-height: 0.95;
 }
 
+/* ОСНОВНОЙ СПИСОК */
 
 .project-list {
-    display: flex;
-    flex-direction: column;
-   
-    line-height: 0.95;
+  display: flex;
+  flex-direction: column;
+  line-height: 0.98;
 }
 
+.project-item {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ЖАНРЫ (верхний уровень) */
+
 .project-link {
-    font-size: 44px;
-    text-decoration: none;
-    color: #000;
-    transition: opacity 0.3s;
-    list-style: none;
+  display: inline-block;
+  font-size: 44px;
+  line-height: 1;
+  color: #000;
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+  text-decoration-thickness: 3px;
+}
+
+/* УБИРАЕМ СИНИЙ HOVER У ЖАНРОВ */
+
+.project-list > li > .project-link:hover {
+  color: #000;
+}
+
+/* КНОПКА (чтобы выглядела как текст) */
+
+.project-toggle {
+  appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  font-family: 'Omega UI', sans-serif;
+  font-size: 44px;
+  line-height: 1.02;
+  color: #000;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+  text-decoration-thickness: 3px;
+  cursor: pointer;
+}
+/* ВЫПАДАЮЩИЙ СПИСОК */
+
+.project-sublist {
+  display: none;
+  flex-direction: column;
+  margin-top: 0;
+
+  /* СДВИГ НА 1 КОЛОНКУ */
+  margin-left: calc((100% / 4) * 1);
+}
+
+/* АКТИВНОЕ СОСТОЯНИЕ */
+
+.project-item.is-open > .project-sublist {
+  display: flex;
+}
+
+/* ПОДПРОЕКТЫ */
+
+.subproject-link {
+  display: inline-block;
+  font-size: 44px;
+  line-height: 0.98;
+  color: #000;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* СИНИЙ HOVER ТОЛЬКО У ПОДПРОЕКТОВ */
+
+.subproject-link:hover {
+  color: #4b2fff;
 }
 
 .project-link:hover {
-   color: #4b2fff; /* Твой синий цвет при наведении */
+  color: #4b2fff;
 }
 
-/* Блок с именем справа */
-.hero-name {
-    grid-column: 9 / 13; /* Занимает последние 4 колонки справа */
-    position: relative;
-  
-}
+/* Превью как отдельный слой, чтобы могли налезать на имя */
 
-.name-block {
-    display: flex;
-    flex-direction: column;
-    font-size: 44px; 
-    line-height: 0.95; /* Сделали одинаковым с h1 */
-    text-align: left;
-}
 
-.name-block span {
-    display: block;
-    white-space: nowrap; /* Чтобы текст не переносился сам по себе */
-}
-
-/* Настройка "лесенки" по строчкам */
-.name-block .line-1 { padding-left: 0 !important; }
-.name-block .line-2 { padding-left: 114px !important; } /* Тот самый отступ */
-.name-block .line-3 { padding-left: 0 !important; }
-.name-block .line-4 { padding-left: 0 !important; }
-.name-block .line-5 { padding-left: 0 !important; }
-/* --- ОБНОВЛЕННЫЙ КОД ДЛЯ ШЕСТОЙ СТРОКИ И ФОТО --- */
-
-/* Настройка всей строки (текст + фото) */
-.name-block .line-6 {
-    display: flex !important;      /* Включаем flex-контейнер */
-    flex-direction: row;           /* Элементы в ряд */
-    align-items: flex-start;       /* КРИТИЧНО: Выравнивание по верхнему краю букв */
-    gap: 9px;                     /* Расстояние между словом illustrator и фото */
-    padding-left: 150px !important;
-    margin-top: 5px !important;    /* Небольшой отступ сверху */
-}
-
-/* Настройка самой картинки внутри этой строки */
-.profile-image-inline {
-    width: 100px !important;        /* Сделали фото маленьким, как на макете */
-    height: auto !important;       /* Пропорции сохраняются */
-    filter: grayscale(1);          /* Чёрно-белый эффект */
-    display: block !important;
-    margin: 0 !important;          /* Убираем все старые отступы */
-    transform: translateY(10px);   /* Тонкая настройка: чуть опустить, чтобы совпало с верхом строчных букв */
-}
-/* Общие настройки для секций */
-section {
-    width: 100%;
-}
-
-/* Линия CV */
-.cv-section {
-    padding-top: -300px;
-    padding-bottom: 0px;
-}
-.cv-link {
-    grid-column: 11 / 13; /* В самый правый угол */
-    font-size: 40px;
-    text-align: right;
-    margin-top: -350px;
-}
-.cv-link a { text-decoration: none; color: #000; }
-
-/* Блок описания (Работаю с...) */
-.description-section {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    align-items: start; /* Выравнивание по верхнему краю */
-    margin-top: -100px;
-    margin-bottom: 100px;
-    gap: 20px;
-}
-
-#p5-container {
-    grid-column: 2 / 7; /* Увеличили охват до 7-й колонки, чтобы холсту было просторно */
-    display: flex;
-    justify-content: flex-start;
-    overflow: visible; /* Чтобы буквы на краях не обрезались */
-    margin-top: -50px;
-}
-
-#p5-container canvas {
-    /* Убираем жесткое ограничение 100%, если холст должен быть чуть шире колонки */
-    max-width: 100%; 
-    height: auto !important;
-}
-.description-text {
-    grid-column: 8 / 13; /* Текст справа (с 8 по 12 колонку) */
-    font-size: 44px;
-    line-height: 1.1;
-}
-
-/* Инфо-блоки с линиями */
-.info-item {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    /* Убрали старую линию */
-    padding-top: 20px;
-    padding-bottom: 60px;
-    align-items: start;
-    position: relative; /* Чтобы линия привязалась к блоку */
-    gap: 20px;
-}
-
-/* Новая линия, начинающаяся со 2-й колонки */
-.info-item::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    /* Рассчитываем отступ: 100% / 12 колонок * 1 пропущенная колонка */
-    left: calc((100% / 12) * 1 + 10px); 
-    right: 10px; /* Отступ справа, чтобы не липло к краю */
-    height: 1px;
-    background-color: #000;
-}
-
-.info-label {
-    grid-column: 2 / 5; 
-    font-size: 30px;
-}
-
-.info-years {
-    grid-column: 4 / 6; 
-    font-size: 80px;
-    line-height: 1;
-}
-
-.info-content {
-    grid-column: 8 / 13; 
-    font-size: 16px;
-    line-height: 1.4;
-    max-width: 500px;
-}
-
-/* Футер */
-.footer {
-    padding-top: 40px;
-    padding-bottom: 40px;
-    font-size: 14px;
-    border-top: none !important;
-}
-.footer-label { grid-column: 2 / 4; }
-.footer-email { grid-column: 5 / 8; }
-.footer-tg { grid-column: 8 / 13; margin-left: 10px;}
-
-/* Убираем линию у блоков с этим классом */
-.info-item.no-border::before {
-    display: none !important;
-}
-
-.info-item.no-border {
-    padding-top: 0; 
-}
-
-/* --- СТИЛИ ДЛЯ ВЕКТОРНОЙ СТРЕЛОЧКИ --- */
-.inline-arrow {
-    display: inline-block;
-    width: 1.5em;      
-    height: 1.5em;
-    vertical-align: middle; 
-    filter: brightness(0); 
-}
 .project-previews {
-    /* Теперь контейнер тянется почти до самого блока с именем */
-    grid-column: 4 / 11; 
-    position: relative;
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-    padding-left: 0 !important;
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  height: 100%; /* Растягиваем на всю высоту секции */
+  pointer-events: none;
+  z-index: 4;
+  grid-column: 5 / 9;
 }
 
 .preview-img {
-    position: absolute;
-    top: 0;
-    left: -25px;
-    
-    /* Увеличиваем ширину */
-    width: 100%;       /* Заполнит все выделенные колонки (с 4 по 11) */
-    max-width: 1500px;  /* Поставь число побольше, например 800px или 1000px */
-    
-    height: auto;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-    
-    /* Оставляем микро-коррекцию по высоте, чтобы совпадало с текстом */
-    transform: translateY(10px); 
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  height: auto;
+  max-width: 400px; /* Ограничиваем ширину превью */
+  object-fit: contain;
 }
 
 .preview-img.active {
-    opacity: 1;
+  opacity: 1;
 }
-/* --- ЦИЛИНДР --- */
 
-.cylinder-animation {
-    grid-column: 1 / 6;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 220px;
+
+
+
+
+/* Блок имени */
+.hero-name {
+  grid-column: 9 / -1;
+  position: relative;
+  z-index: 2;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.name-block {
+  display: flex;
+  flex-direction: column;
+  font-size: 44px;
+  line-height: 0.95;
+  text-align: left;
+}
+
+.name-block span {
+  display: block;
+}
+
+.name-block .line-1 {
+  padding-left: 0;
+}
+
+.name-block .line-2 {
+  padding-left: 114px;
+}
+
+.name-block .line-3 {
+  padding-left: 0;
+}
+
+.name-block .line-4 {
+  padding-left: 0;
+  white-space: nowrap;
+}
+
+.name-block .line-5 {
+  padding-left: 0;
+  white-space: nowrap;
+}
+
+.name-block .line-6 {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 9px;
+  padding-left: 190px;
+  margin-top: 5px;
+  white-space: nowrap;
+}
+
+.profile-image-inline {
+  width: 100px;
+  height: auto;
+  filter: grayscale(1);
+  margin: 0;
+  transform: translateY(10px);
+}
+
+/* CV */
+.cv-section {
+  padding-top: clamp(10px, 8vw, 60px);
+  padding-bottom: 100px;
+}
+
+.cv-link {
+  grid-column: 11 / 13;
+  font-size: 40px;
+  text-align: right;
+}
+
+.cv-link a {
+  text-decoration: none;
+}
+
+/* Description */
+.description-section {
+  position: relative;
+}
+
+#cv-target {
+  position: absolute;
+}
+
+.p5-stage {
+  grid-column: 2 / 6;
+  justify-self: start;
+  align-self: start;
+  width: max-content;
+  min-height: 0;
+  overflow: visible;
+  pointer-events: none;
 }
 
 #p5-container {
-    width: 100%;
-    height: 100%;
+  display: inline-block;
+  width: max-content;
+  pointer-events: auto;
+  transform: translateY(-60px); 
+  transform-origin: top left;
 }
 
 #p5-container canvas {
-    width: 100% !important;
-    height: 100% !important;
-    display: block;
+  display: block;
+  width: auto !important;
+  height: auto !important;
+  max-width: none !important;
 }
+
+.description-text {
+  grid-column: 8 / 13;
+  font-size: 44px;
+  line-height: 1.1;
+}
+
+.description-text p {
+  margin: 0;
+}
+
+/* Инфо-блоки */
+.info-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 20px;
+  align-items: start;
+  padding-top: 20px;
+  padding-bottom: 60px;
+}
+
+.info-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: calc((100% / 12) * 1 + 10px);
+  right: 10px;
+  height: 1px;
+  background-color: #000;
+}
+
+.info-label {
+  grid-column: 2 / 5;
+  font-size: 30px;
+}
+
+.info-years {
+  grid-column: 4 / 6;
+  font-size: 80px;
+  line-height: 1;
+}
+
+.info-content {
+  grid-column: 8 / 13;
+  max-width: 500px;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.info-item.no-border::before {
+  display: none;
+}
+
+.info-item.no-border {
+  padding-top: 0;
+}
+
+/* Стрелка */
+.inline-arrow {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  filter: brightness(0);
+}
+
+/* Footer */
+.footer {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  font-size: 14px;
+}
+
+.footer-label {
+  grid-column: 2 / 4;
+}
+
+.footer-email {
+  grid-column: 4 / 8;
+}
+
+.footer-tg {
+  grid-column: 8 / 13;
+  margin-left: 0px;
+}
+
+/* ===== MOBILE VERSION ===== */
+
+@media (max-width: 768px) {
+  :root {
+    --page-padding: 15px; /* Немного увеличим отступы для удобства пальцев */
+  }
+
+  /* Перестраиваем общую сетку в 1 колонку */
+  .container,
+  .top-bar,
+  .info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  /* Шапка */
+  .top-bar {
+    position: relative; /* Убираем sticky, если на мобилках оно мешает контенту */
+    margin-bottom: 30px;
+  }
+
+  .bio-en, .bio-ru, .contacts {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  .contacts {
+    text-align: left;
+    margin-top: 10px;
+  }
+
+  /* Первый экран */
+  .hero-section {
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .projects {
+    width: 100%;
+    order: 2; /* Список проектов пойдет после имени */
+    margin-top: 40px;
+  }
+
+  h1, .project-link, .project-toggle, .subproject-link, .name-block, .description-text, .cv-link {
+    font-size: 32px; /* Уменьшаем гигантский шрифт для мобильных */
+    line-height: 1.1;
+  }
+
+  /* Имя автора */
+  .hero-name {
+    width: 100%;
+    order: 1;
+    margin-bottom: 20px;
+  }
+
+  .name-block .line-2, 
+  .name-block .line-6 {
+    padding-left: 0; /* Убираем специфические отступы из десктопа */
+  }
+
+  .profile-image-inline {
+    width: 60px; /* Уменьшаем аватарку */
+  }
+
+  /* Выпадающий список */
+  .project-sublist {
+    margin-left: 20px; /* Небольшой отступ вместо колоночного смещения */
+  }
+
+  /* Превью картинок (скрываем или адаптируем) */
+  .project-previews {
+    display: none; /* На мобилках hover-превью обычно не работают, лучше скрыть */
+  }
+
+  /* Описание и p5.js */
+  .description-text {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  #p5-container {
+    transform: scale(0.7) translateY(0); /* Масштабируем генеративную графику */
+    margin-bottom: 20px;
+  }
+
+  /* CV и Инфо-блоки */
+  .cv-link {
+    text-align: left;
+  }
+
+  .info-item::before {
+    left: 0; /* Линия на всю ширину */
+  }
+
+  .info-label {
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .info-years {
+    font-size: 50px;
+  }
+
+  .info-content {
+    width: 100%;
+    max-width: none;
+  }
+
+  /* Футер */
+  .footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    margin-left: 0px;
+  }
+}
+
+/* Дополнительная правка для совсем маленьких экранов (iPhone SE и т.д.) */
+@media (max-width: 480px) {
+  h1, .project-link, .project-toggle, .subproject-link, .name-block, .description-text {
+    font-size: 26px;
+  }
+  
+  .info-years {
+    font-size: 40px;
+  }
+}
+
 
 /* ============================================================
    СТРАНИЦА КЕЙСА: ГОЛОС КОЧЕВНИКОВ (12 COLUMNS)
@@ -323,10 +570,15 @@ section {
 
 @font-face {
     font-family: 'OmegaUI';
-    src: url('assets/fonts/OmegaUI-Regular.otf') format('opentype');
+    src: url('https://res.cloudinary.com/dn48h6rt6/image/upload/fonts/OmegaUI-Regular.otf') format('opentype');
     font-weight: normal;
 }
-
+.project-main {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+  padding-top: 50px;
+}
 .project-page {
     font-family: 'OmegaUI', sans-serif;
     background-color: #ffffff;
@@ -385,316 +637,68 @@ section {
     margin: 0 20px;
 }
 /* Основная сетка контента */
-.project-main {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 20px;
-    /* Убираем лишний padding: 0 40px, если на главной его нет */
-    padding: 0; 
-    margin-top: 80px; /* Отступ от шапки */
-}
+/* ===== HERO: ГОЛОС КОЧЕВНИКОВ ===== */
 
-/* Заголовок кейса */
 .case-header-title {
-    grid-column: 1 / 8;
-    font-size: 45px;
-    line-height: 1.1;
-   
+  grid-column: 1 / 8;
+  font-size: 44px;
+  line-height: 1.1;
+  font-weight: normal;
+  text-align: left;
+  padding-left: 10px;
 }
 
 .case-header-symbols-top {
-    grid-column: 8 / 13;
-    display: flex;
-    justify-content: space-between;
-    font-size: 44px;
+  grid-column: 1 / 13;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  font-size: 35px;
 }
 
-/* Центральный символ */
+.case-header-symbols-top span:first-child {
+  grid-column: 8 / 9;
+  justify-self: start;
+}
+
+.case-header-symbols-top span:last-child {
+  grid-column: 12 / 13;
+  justify-self: end;
+}
+
+/* центральный символ */
 .main-symbol-container {
-    grid-column: 1 / 13;
-    display: flex;
-    justify-content: center;
-    padding: 90px 0;
+  grid-column: 1 / 13;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  padding: 30px 0 140px;
 }
 
-.main-symbol { width: 140px; }
-
-/* Описание кейса */
-.case-description-symbol {
-    grid-column: 1 / 3;
-    font-size: 44px;
-    align-self: end;
-    margin-top: 40px;
+.main-symbol-container > * {
+  grid-column: 6 / 8;
+  justify-self: center;
 }
 
-.description-text-case {
-    grid-column: 7 / 13;
-    font-size: 45px;
-    text-align: left;
-    line-height: 1;
-    margin-top: 30px;
-}
-
-/* Галерея: изображения на всю ширину или в сетке */
-.case-gallery {
-    grid-column: 1 / 13;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 20px;
-    margin-top: 80px;
-}
-
-/* ИСПРАВЛЕННЫЙ КЛАСС ДЛЯ ПЕРВОЙ КАРТИНКИ В РАСПОР */
-.full-bleed-first {
-    grid-column: 1 / 13;
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    margin-bottom: 40px;
-    
-}
-
-.full-bleed-first img {
-    width: 100%;
-    display: block;
-}
-
-.full-img {
-    grid-column: 1 / 13;
-    width: 100%;
-    margin-bottom: 40px;
-}
-
-.half-img-left { grid-column: 1 / 7; width: 100%; }
-.half-img-right { grid-column: 7 / 13; width: 100%; }
-
-/* Сетка для логотипов и знаков */
-.logo-and-symbols-grid {
-    grid-column: 1 / 13;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    margin-bottom: 80px;
-}
-
-.logos-column {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.logos-column img { width: 80%; }
-
-.symbols-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-/* ============================================================
-   ПРИНТ-РАЗДЕЛ: ПОЛИГРАФИЯ (Обновлено под единую картинку)
-   ============================================================ */
-
-/* Контейнер для всего раздела (оставляем без изменений) */
-.print-section {
-    grid-column: 1 / 13;
-    margin-top: 100px;
-    margin-bottom: 120px;
-  
-}
-
-/* Шапка раздела с заголовком и звездочками (оставляем) */
-.print-header-grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 20px;
-    margin-bottom: 60px;
-    align-items: center;
-}
-
-.print-star-icon { width: 44px; height: auto; margin-top: -30px; margin-left: -13px; }
-.print-title { grid-column: 2 / 12; font-size: 24px; font-weight: normal; text-transform: none; margin-left: -75px; }
-
-
-/* СТИЛИ ДЛЯ НОВОЙ ЕДИНОЙ КАРТИНКИ */
-.polygraphy-image-wrapper {
-    grid-column: 1 / 13; /* Занимает все 12 колонок сетки */
-    width: 100%;
-    margin-top: -60px;
-}
-
-.img-polygraphy-main {
-    width: 100%; /* Растягивается на всю ширину сетки */
-    height: auto;
-    display: block;
-    /* Опционально: легкая тень, чтобы картинка не прилипала к фону */
-    filter: drop-shadow(0 10px 30px rgba(0,0,0,0.08)); 
-}
-/* ============================================================
-   КОМПОНОВКА: БУКЛЕТЫ И ПОСТЕРЫ (ФИНАЛЬНАЯ ПРАВКА)
-   ============================================================ */
-
-/* Контейнер для всего блока */
-.booklet-poster-layout {
-    grid-column: 1 / 13;
-    display: flex;
-    flex-direction: column;
-    gap: 0; 
-    margin-top: 10px;
-    margin-bottom: 20px;
-}
-
-/* ВЕРХНИЙ РЯД: Выравнивание по высоте (Flex) */
-.booklets-row {
-    display: flex; /* Переключаем на flex для выравнивания высоты */
-    width: 100.2%;
-    align-items: stretch; /* Растягивает обе картинки до одной высоты */
-    margin-top: -80px;
-}
-
-.booklets-row img {
-    height: auto;
-    display: block;
-    object-fit: cover;
-    /* Убираем фиксированную ширину, чтобы флекс распределил их пропорционально */
-    width: 0; 
-    flex-grow: 1; 
-}
-
-/* Если одна картинка в оригинале заметно шире другой, 
-   можно вручную подправить пропорцию, например так: */
-.booklets-row img:first-child { flex-grow: 1; }
-.booklets-row img:last-child { flex-grow: 1.1; } 
-
-/* НИЖНИЙ РЯД: Плакаты на всю ширину */
-.posters-grid {
-    width: 100%;
-}
-
-.posters-grid img {
-    width: 100%; 
-    height: auto;
-    display: block;
-    margin-top: -20px;
-}
-/* ============================================================
-   РАЗДЕЛ: ШИРОКИЙ ФОРМАТ (ОПТИМИЗИРОВАННЫЙ)
-   ============================================================ */
-
-.wide-format-section {
-    grid-column: 1 / 13;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    margin-top: 0px;
-}
-
-/* Стили для заголовка (согласно твоему макету) */
-.wide-header-grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 20px;
-    align-items: center;
-    margin-left: -75px;
-}
-
-.wide-star-icon { 
-    grid-column: 1; 
-    width: 44px; 
-    justify-self: end; 
-    margin-left: -80px;
-}
-
-.wide-title { 
-    grid-column: 2 / 13; 
-    font-size: 24px; 
-    font-weight: normal; 
-    line-height: 1.2;
-    margin-top: 50px;
-}
-
-/* Контейнер для склеенной картинки */
-.wide-composite-wrapper {
-    width: 100%;
-}
-
-.img-wide-composite {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin-top: -40px;
-    position: relative; /* Необходим для работы z-index */
-    z-index: 10;        /* Высокий приоритет, выходят вперед */
-}
-
-/* Финальная сцена */
-.stage-photo {
-    width: 100%;
-    margin-top: -80px;
-}
-
-.stage-photo img {
-    width: 100%;
-    height: auto;
-    display: block;
-    position: relative; /* Необходим для работы z-index */
-    z-index: 1;
-}
-
-.bus-container {
-    grid-column: 1 / 13;
-    width: 100%;
-    margin: 0;   /* Обнуляем внешние отступы */
-    padding: 0;  /* Обнуляем внутренние отступы */
-    line-height: 0; /* Убирает микро-зазор под картинкой (inline-gap) */
-}
-
-/* Настройка самих изображений */
-.full-img-tight {
-    width: 100%;
-    height: auto;
-    display: block; /* Убирает зазор снизу, который есть у строчных элементов */
-    margin-top: -30px;
-}
-
-.full-img {
-    width: 100%;
-    height: auto;
-    display: block; /* Убирает зазор снизу, который есть у строчных элементов */
-    margin-top: 80px;
-}
-/* Контейнер для анимации */
-/* Контейнер для анимации (оставляем без изменений) */
+/* анимация */
 .hero-center-animation {
-    grid-column: 6 / 8;
-    display: grid;
-    place-items: center;
-    position: relative;
-    height: 200px;
-    margin-bottom: -30px;
+  position: relative;
+  width: 200px;
+  height: 200px;
 }
 
-/* Общие стили для всех шейпов: Ускоряем анимацию */
 .animated-shape {
-    position: absolute;
-    width: 200px;
-    height: auto;
-    opacity: 0;
-    /* УМЕНЬШАЕМ время цикла до 6 секунд (по 1 секунде на элемент) */
-    animation: shapeCycle 6s infinite; 
-    transition: opacity 0.1s ; /* Добавляет легкую, резкую плавность */
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 200px;
+  opacity: 0;
+  animation: shapeCycle 6s infinite;
 }
 
-/* Анимация смены прозрачности: Оставляем как есть, она универсальна */
 @keyframes shapeCycle {
-    0%, 16% { opacity: 1; }  /* Элемент виден 1/6 времени */
-    20%, 100% { opacity: 0; } /* Элемент скрыт */
+  0%, 16% { opacity: 1; }
+  20%, 100% { opacity: 0; }
 }
 
-/* Настраиваем НОВЫЕ ЗАДЕРЖКИ (шаг в 1 секунду) */
 .animated-shape:nth-child(1) { animation-delay: 0s; }
 .animated-shape:nth-child(2) { animation-delay: 1s; }
 .animated-shape:nth-child(3) { animation-delay: 2s; }
@@ -702,62 +706,309 @@ section {
 .animated-shape:nth-child(5) { animation-delay: 4s; }
 .animated-shape:nth-child(6) { animation-delay: 5s; }
 
-/* ============================================================
-   РАЗДЕЛ: МЕРЧ
-   ============================================================ */
-
-.merch-section {
-    grid-column: 1 / 13;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    margin-top: 100px;
-    margin-bottom: 60px;
+/* нижний левый символ */
+.case-description-symbol {
+  grid-column: 1 / 3;
+  margin: 0;
+  font-size: 44px;
+  align-self: end;
 }
 
-/* Сетка заголовка (копирует стиль Полиграфии/Широкого формата) */
+/* описание справа */
+.description-text-case {
+  grid-column: 7 / 13;
+  margin: 0;
+  font-size: 44px;
+  line-height: 1;
+  text-align: left;
+}
+
+/* Галерея */
+.case-gallery {
+  grid-column: 1 / 13;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+}
+
+.full-bleed-first {
+  grid-column: 1 / 13;
+}
+
+/* только для больших экранов */
+@media (min-width: 768px) {
+  .full-bleed-first {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
+}
+
+.full-bleed-first img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Логотипы и символы */
+.logo-and-symbols-grid {
+  grid-column: 1 / 13;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 80px;
+}
+
+.logos-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.logos-column img {
+  width: 80%;
+}
+
+.symbols-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Полиграфия */
+.print-section {
+  grid-column: 1 / 13;
+  margin-top: 100px;
+  margin-bottom: 120px;
+}
+
+.print-header-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+  margin-bottom: 60px;
+  align-items: center;
+}
+
+.print-star-icon {
+  width: 35px;
+  height: auto;
+  margin-top: -25px;
+  margin-left: 10px;
+}
+
+.print-title {
+  grid-column: 2 / 12;
+  font-size: 18px;
+  font-weight: normal;
+  margin-left: -75px;
+}
+
+.polygraphy-image-wrapper {
+  grid-column: 1 / 13;
+  width: 100%;
+  margin-top: -60px;
+}
+
+.img-polygraphy-main {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.08));
+}
+
+/* Буклеты и постеры */
+.booklet-poster-layout {
+  grid-column: 1 / 13;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.booklets-row {
+  display: flex;
+  width: 100.2%;
+  align-items: stretch;
+  margin-top: -80px;
+}
+
+.booklets-row img {
+  height: auto;
+  display: block;
+  object-fit: cover;
+  width: 0;
+  flex-grow: 1;
+}
+
+.booklets-row img:first-child {
+  flex-grow: 1;
+}
+
+.booklets-row img:last-child {
+  flex-grow: 1.1;
+}
+
+.posters-grid {
+  width: 100%;
+}
+
+.posters-grid img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-top: -20px;
+}
+
+/* Широкий формат */
+.wide-format-section {
+  grid-column: 1 / 13;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 0;
+}
+
+.wide-header-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+  align-items: center;
+  margin-left: 0px;
+}
+
+.wide-star-icon {
+ width: 35px;
+  height: auto;
+  margin-top: 0px;
+  margin-left: 15px;
+}
+
+.wide-title {
+  grid-column: 2 / 13;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 1.2;
+  margin-top: 40px;
+  margin-left: -75px;
+}
+
+.wide-composite-wrapper {
+  width: 100%;
+}
+
+.img-wide-composite {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-top: -40px;
+  position: relative;
+  z-index: 10;
+}
+
+.stage-photo {
+  width: 100%;
+  margin-top: -80px;
+}
+
+.stage-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+/* Автобус */
+.bus-container {
+  grid-column: 1 / 13;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+}
+
+.full-img-tight {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-top: -30px;
+}
+
+/* Центральная анимация */
+.hero-center-animation {
+  grid-column: 6 / 8;
+  display: grid;
+  place-items: center;
+  position: relative;
+  height: 200px;
+  margin-bottom: -30px;
+}
+
+.animated-shape {
+  position: absolute;
+  width: 200px;
+  height: auto;
+  opacity: 0;
+  animation: shapeCycle 6s infinite;
+  transition: opacity 0.1s;
+}
+
+@keyframes shapeCycle {
+  0%, 16% {
+    opacity: 1;
+  }
+  20%, 100% {
+    opacity: 0;
+  }
+}
+
+.animated-shape:nth-child(1) { animation-delay: 0s; }
+.animated-shape:nth-child(2) { animation-delay: 1s; }
+.animated-shape:nth-child(3) { animation-delay: 2s; }
+.animated-shape:nth-child(4) { animation-delay: 3s; }
+.animated-shape:nth-child(5) { animation-delay: 4s; }
+.animated-shape:nth-child(6) { animation-delay: 5s; }
+
+/* Мерч */
+.merch-section {
+  grid-column: 1 / 13;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 100px;
+  margin-bottom: 60px;
+}
+
 .merch-header-grid {
-    display: grid;
-    grid-template-columns: 40px 1fr;
-    gap: 20px;
-    align-items: center;
-    margin-top: -60px;
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 20px;
+  align-items: center;
+  margin-top: -60px;
 }
 
 .merch-star-icon {
-    width: 44px;
-    height: auto;
-    margin-top: -30px;
+  width: 35px;
+  height: auto;
+  margin-top: -20px;
+  margin-left: 10px;
 }
 
 .merch-title {
-    font-size: 24px;
-    font-weight: normal;
-    line-height: 1.2;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 1.2;
 }
 
-.merch-subtitle {
-    display: block;
-    color: #666;
-    font-size: 16px;
-    margin-top: 4px;
-}
-
-/* Фото мерча на весь экран */
 .merch-main-photo img {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin-top: -45px;
-}
-
-/* Футер кейса */
-.case-footer {
-    padding: 80px 0;
-    border-top: 1px solid #eee;
-    text-align: center;
-    color: #999;
-    font-size: 14px;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-top: -45px;
 }
 
 ul, li {
@@ -770,100 +1021,208 @@ li::before, li::after {
     content: none !important; /* Убирает точки, созданные через псевдоэлементы */
     display: none !important;
 }
+/* ============================================================
+   MOBILE: CASE PAGE "ГОЛОС КОЧЕВНИКОВ"
+   ============================================================ */
+@media (max-width: 767px) {
+    .project-page {
+        padding: 5px;
+    }
 
+    .fixed-nav {
+        padding: 12px 0;
+    }
 
-.hero-section {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr); /* Ваша сетка */
-    gap: 20px;
-    position: relative; /* Важно: чтобы абсолютные элементы внутри не улетали */
-    padding-top: 50px;
+    .nav-content {
+        grid-template-columns: 1fr auto;
+        row-gap: 8px;
+        column-gap: 12px;
+        padding: 0 10px;
+    }
 
+    .nav-link:first-child {
+        grid-column: 1 / 2;
+        grid-row: 1;
+        font-size: 14px;
+    }
+
+    .nav-link:last-child {
+        grid-column: 2 / 3;
+        grid-row: 1;
+        text-align: right;
+        font-size: 14px;
+    }
+
+    .nav-title {
+        grid-column: 1 / 3;
+        grid-row: 2;
+        font-size: 13px;
+    }
+
+    .nav-line {
+        grid-column: 1 / 3;
+        grid-row: 3;
+        margin: 0;
+    }
+
+    .project-main {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        margin-top: 20px;
+    }
+
+    .case-header-title,
+    .case-header-symbols-top,
+    .main-symbol-container,
+    .case-description-symbol,
+    .description-text-case,
+    .case-gallery,
+    .full-bleed-first,
+    .logo-and-symbols-grid,
+    .print-section,
+    .booklet-poster-layout,
+    .wide-format-section,
+    .bus-container,
+    .merch-section {
+        grid-column: 1 / -1;
+    }
+
+    .case-header-title {
+        font-size: 30px;
+        line-height: 1.03;
+        margin-left: -5px;
+    }
+
+    .case-header-symbols-top {
+        display: flex;
+        justify-content: space-between;
+        font-size: 30px;
+    }
+
+    .main-symbol-container {
+        padding: 24px 0 40px;
+    }
+
+    .hero-center-animation {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 0;
+    }
+
+    .animated-shape {
+        width: 150px;
+    }
+
+    .case-description-symbol {
+        font-size: 30px;
+        margin-top: 8px;
+        margin-left: 7px;
+    }
+
+    .description-text-case {
+        font-size: 30px;
+        line-height: 0.95;
+        margin-top: 0;
+        word-break: break-word;
+    }
+
+    .case-gallery {
+        gap: 16px;
+        margin-top: 32px;
+    }
+
+    .full-bleed-first {
+        width: 100%;
+        position: static;
+        margin: 0 0 16px;
+    }
+
+    .logo-and-symbols-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        margin-bottom: 20px;
+    }
+
+    .logos-column img {
+        width: 90%;
+        max-width: 420px;
+    }
+
+    .symbols-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .print-section,
+    .merch-section {
+        margin: 24px 0;
+    }
+
+    .print-header-grid,
+    .wide-header-grid,
+    .merch-header-grid {
+        grid-template-columns: 24px 1fr;
+        gap: 10px;
+        margin: 0 0 18px;
+        align-items: start;
+    }
+
+    .print-star-icon,
+    .wide-star-icon,
+    .merch-star-icon {
+        width: 24px;
+        margin: 2px 0 0;
+        justify-self: start;
+    }
+
+    .print-title,
+    .wide-title,
+    .merch-title {
+        grid-column: 2 / 3;
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.2;
+    }
+
+    .polygraphy-image-wrapper,
+    .img-wide-composite,
+    .stage-photo img,
+    .full-img-tight,
+    .merch-main-photo img {
+        margin-top: 0;
+    }
+
+    .booklet-poster-layout {
+        margin: 0;
+        gap: 8px;
+    }
+
+    .booklets-row {
+        width: 100%;
+        margin-top: 0;
+        gap: 8px;
+    }
+
+    .posters-grid img {
+        margin-top: 0;
+    }
+
+    .wide-format-section {
+        gap: 16px;
+        margin-top: 8px;
+    }
+
+    .stage-photo {
+        margin-top: 0;
+    }
 }
-
-.title-svg {
-    grid-column: 1 / 5; /* Заголовок слева */
-    width: 100%;
-    z-index: 2; /* Заголовок поверх цветов, если нужно */
-}
-
-.flowers-wrapper {
-    grid-column: 6 / 13; /* Занимает место с 6 по 13 колонку */
-    position: relative;
-    display: flex;
-    justify-content: flex-end; /* Прижимаем к правому краю 13 колонки */
-}
-
-.flowers-img {
-    width: 100%; /* Увеличиваем масштаб, если в Figma она больше контейнера */
-    height: auto;
-    position: absolute; /* Позволяет двигать её свободно */
-    top: -70px;         /* Поднимаем вверх, чтобы перекрывала шапку как на скрине */
-    right: -7%;        /* Сдвигаем вправо за край сетки */
-    z-index: 1;         /* Уходит под заголовок или на нужный слой */
-    
-    /* Чтобы картинка не мешала нажимать на ссылки, если она их перекроет */
-    pointer-events: none; 
-}
-
-.vasylyok-img {
-width: 10%;
-height: auto;
-grid-column: 1 / 2; 
-height: auto;
-position: absolute;
-top: 150px;         
-left: -1%;
-    }
-
-.trava-img {
-width: 20%;
-height: auto;
-grid-column: 1 / 4; 
-height: auto;
-position: absolute;
-top: 350px;         
-left: -5%;
-z-index: -1;
-    }
-
-
-.card-img {
-width: 30%;
-height: auto;
-grid-column: 2 / 7; 
-height: auto;
-position: absolute;
-top: 450px; 
-left: 450px;        
-    }
-
-.part2-img {
-width: 90%;
-height: auto;
-grid-column: 1 / 13; 
-height: auto;
-position: absolute;
-top: 1150px; 
-margin-left: -120px;
-    }
-
-.koll-img {
-width:70%;
-height: auto;
-grid-column: 1 / 11; 
-height: auto;
-position: absolute;
-top: 2650px; 
-right: 300px;
-    }
 
 .title2-svg {
     grid-column: 1 / 13;
     width: 200px;
     height: auto;
     padding: 0 10px;
-    }
+}
 
 .posters-section {
     display: grid;
@@ -872,8 +1231,9 @@ right: 300px;
     position: relative;
     padding: 10px 0;
 }
+
 .posters-container {
-    grid-column: 2 / 13; /* Начинаем чуть раньше, чтобы было перекрытие */
+    grid-column: 2 / 13;
     position: relative;
     margin-bottom: 650px;
 }
@@ -882,165 +1242,35 @@ right: 300px;
     width: 80%;
     height: auto;
     position: absolute;
-    top:  20px;
-    left: 40px;
-}
-.posters-caption {
-    font-size: 18px;
-    font-weight: normal;
-    line-height: 1.1;
-    grid-column: 2 / 13;
-    position: absolute;
-    margin-top: 555px;
-    margin-left: 37px;
-    margin-bottom: 80px;
-}
-
-.posters47-container {
-    grid-column: 2 / 12; /* Тоже во 2-ю колонку, чтобы была ровная вертикаль слева */
-    position: relative;
-    
-}
-
-.posters47-img {
-    width: 100%;
-    height: auto;
-    display: block;
-
-}
-
-.posters-caption2 {
-    font-size: 18px;
-    font-weight: normal;
-    line-height: 1.1;
-    grid-column: 2 / 13;
-    position: absolute;
-    margin-top: 440px;
-    margin-left: 37px;
-    margin-bottom: 80px;
-}
-.goloskochev-img {
-    width: 90%;
-    height: auto;
-    display: block;
-   margin-top: -100px;
-
-}
-
-.posters-caption3 {
-    font-size: 18px;
-    font-weight: normal;
-    line-height: 1.1;
-    grid-column: 2 / 13;
-    position: absolute;
-    margin-top: 15px;
-}
-
-.pink-img {
-    width: 70%;
-    height: auto;
-    display: block;
-   margin-top: -500px;
-
-}
-
-.posters-caption4 {
-    font-size: 18px;
-    font-weight: normal;
-    line-height: 1.1;
-    grid-column: 2 / 13;
-    position: absolute;
-    margin-top: 15px;
-}
-
-.reklama-img {
-    width: 90%;
-    height: auto;
-    display: block;
-    margin-top: -520px;
-}
-
-.posters-caption5 {
-    font-size: 18px;
-    font-weight: normal;
-    line-height: 1.1;
-    grid-column: 2 / 13;
-    position: absolute;
-    margin-top: 15px;
-}
-
-.vector-img {
-    width: 90%;
-    height: auto;
-    display: block;
-    margin-top: -520px;
-}
-
-
-.project-previews2 {
-    grid-column: 5 / 13; /* Как мы договаривались для правой стороны */
-    display: flex;
-    align-items: center;
-    min-height: 400px; /* Чтобы контейнер не схлопывался */
-}
-.preview3-img {
-    width: 200%;
-    height: auto;
-    opacity: 0;
-    transition: opacity 0.1s ease-in-out;
-    pointer-events: none;
-    margin-top: -400px;
+    top: 20px;
 }
 
 .preview3-img.active {
     opacity: 1;
 }
 
-.titletrip-svg {
-    width: 100%;
-    height: auto;
-   grid-column: 1 / 13;
-}
-.covertrip-container {
-    grid-column: 1 / 13; /* Как мы договаривались для правой стороны */
-    display: grid;
-    position: relative;
-   }
-
-.covertrip-png {
-    width: 100%;
-    height: auto;
-   grid-column: 1 / 6;
-    margin-top: 100px;
-}
-
-  
-.tripbook-png {
-    width: 80%;
-    height: auto  !important;
-   grid-column: 7 / 13;
-    margin-top: 100px;
-    margin-right: -50px;
-}
-
-.bookcards-container {
-    grid-column: 1 / 13; /* Как мы договаривались для правой стороны */
-    display: grid;
+.project-previews3 {
+    grid-column: 7 / 13;
+    display: flex;
+    align-items: center;
     position: absolute;
-    padding-top: 1500px;
-    
-   }
-.bookcards-png {
-    width: 80%;
-    height: auto;
-    margin-left: 200px;
+    min-height: 400px;
 }
 
+.preview4-img {
+    width: 20%;
+    height: auto;
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out;
+    pointer-events: none;
+    margin-left: 300px;
+}
 
+.preview4-img.active {
+    opacity: 1;
+}
 
-
-
-
+/* ПРЕВЬЮ */
 
 .project-previews {
     grid-column: 5 / 13; /* Как мы договаривались для правой стороны */
@@ -1107,4 +1337,2141 @@ right: 300px;
 
 .preview4-img.active {
     opacity: 1;
+}
+
+.project-previews2 {
+    grid-column: 5 / 13; /* Как мы договаривались для правой стороны */
+    display: flex;
+    align-items: center;
+    min-height: 400px; /* Чтобы контейнер не схлопывался */
+}
+.preview3-img {
+    width: 200%;
+    height: auto;
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out;
+    pointer-events: none;
+    margin-top: -400px;
+}
+
+.preview3-img.active {
+    opacity: 1;
+}
+
+
+
+.preview3-img.active {
+    opacity: 1;
+}
+
+.project-previews3 {
+    grid-column: 7 / 13; /* Как мы договаривались для правой стороны */
+    display: flex;
+    align-items: center;
+    position: absolute;
+    min-height: 400px; /* Чтобы контейнер не схлопывался */
+}
+
+.preview4-img {
+    width: 20%;
+    height: auto;
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out;
+    pointer-events: none;
+    margin-left: 300px;
+}
+
+.preview4-img.active {
+    opacity: 1;
+}
+
+
+
+
+
+
+/* ЧТЕЦКИЙ ВЕЧЕР */
+
+.project-main.chtec-page {
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  
+}
+
+.chtec-canvas {
+  position: relative;
+  width: 100vw; /* ВАЖНО */
+  
+}
+
+.layer {
+  position: absolute;
+  display: block;
+  max-width: none;
+  height: auto;
+}
+
+/* заголовок */
+.texthead {
+  width: 30%;
+  top: 0px;
+  z-index: 10;
+  left: 10px;
+}
+
+/* маленький цветок слева сверху */
+.vasylyok-top-left {
+  width: 150px;
+  height: auto;
+  top: 78px;
+  left: -38px;
+  z-index: 0;
+}
+
+/* длинный колос слева */
+.kolosok-left {
+  width: 378px;
+  height: auto;
+  top: 334px;
+  left: 70px;
+  z-index: 2;
+}
+
+/* большая карточка слева */
+.card2 {
+  width: 28%;
+  top: 358px;
+  left: 348px;
+  transform: rotate(-14deg);
+  z-index: 5;
+}
+
+/* блок открыток сверху по центру */
+.kollazsh2 {
+  width: 330px;
+  top: 0px;
+  left: 550px;
+  z-index: 4;
+}
+
+/* центральный цветок */
+.vasylyok-center {
+  width: 170px;
+  top: 1625px;
+  left: 0px;
+  z-index: 5;
+}
+
+/* центральный колос/трава */
+.kolosok-center {
+  width: 165px;
+  top: 412px;
+  left: 720px;
+  z-index: 3;
+}
+
+/* программа справа, за листьями */
+.part2 {
+  width: 90%;
+  top: 1055px;
+  right: 0px;
+  z-index: 2;
+}
+
+.flowers {
+  width: 980px; /* ИСПРАВЛЕНО: вернули нормальный размер */
+  top: -60px;
+  right: -10px;
+  z-index: 10;
+}
+
+/* нижний коллаж */
+.kollazsh {
+  width: 980px;
+  top: 2600px;
+  left: 80px;
+  z-index: 1;
+}
+
+/* ===== MOBILE ADAPTATION: ЧТЕЦКИЙ ВЕЧЕР ===== */
+
+@media (max-width: 768px) {
+  
+  html, body {
+    overflow-x: hidden; /* Прячем горизонтальный скролл */
+    width: 100%;        /* Фиксируем ширину */
+    position: relative;
+  }
+
+  /* Фикс для всего контейнера */
+  .chtec-canvas {
+    display: block !important;
+    width: 100vw !important;
+    min-height: 1700px !important;
+    overflow-x: hidden !important;
+  }
+
+  /* ТЕКСТ */
+  .texthead {
+    position: relative !important; /* Меняем absolute на relative, чтобы он шел первым */
+    width: 90% !important;
+    top: 20px !important;
+    left: 5px !important;
+    margin-bottom: 50px !important;
+    z-index: 100 !important;
+  }
+
+  /* ЛИСТЬЯ (flowers) */
+ .flowers {
+    position: absolute !important;
+    z-index: 1 !important; /* z-index ниже, чем у заголовка */
+    width: 140% !important; /* Увеличь, если нужно больше нахлеста */
+    top: 200px !important; /* Располагаем под заголовком */
+    right: -10% !important; /* Выводим за правый край, left сбрасываем */
+    left: auto !important;
+    object-fit: contain !important;
+  }
+
+  /* ФОТО С СОБАКОЙ (card2): опускаем еще ниже цветов */
+  .card2 {
+    width: 50% !important;
+    top: -300px !important;
+    left: 100px !important;
+    /* Сдвигаем вниз так, чтобы было под листьями */
+    transform: translateY(850px) rotate(-3deg) !important;
+    z-index: 10 !important;
+    
+  }
+
+  /* Остальное просто прячем под них */
+  .kolosok-left {
+     position: absolute !important;
+    width: 200px !important;
+    top: 600px !important;
+    left: -20px !important;
+    object-fit: contain !important;
+  }
+
+  .kollazsh2 {
+    width: 80% !important;
+    top: 900px !important;
+    left: 10% !important;
+  }
+
+  /* 2. БЛОК ОТКРЫТОК (kollazsh2) */
+  .kollazsh2 {
+    width: 80% !important;
+    top: 1300px !important; /* Спускаем под основную карточку */
+    left: 10% !important;
+    right: auto !important;
+    z-index: 4 !important;
+  }
+
+  /* 3. ПРОГРАММА (part2) — Самый важный текстовый блок */
+  .part2 {
+    width: 90% !important;
+    top: 1000px !important; /* Даем много места, чтобы текст не слипся с картинками */
+    left: 5% !important;
+    right: auto !important;
+    z-index: 10 !important;
+  }
+
+  /* 4. ЦЕНТРАЛЬНЫЙ ЦВЕТОК (vasylyok-center) */
+  .vasylyok-center {
+    width: 150px !important;
+    top: 1450px !important; /* Опускаем под программу */
+    left: -35% !important;
+    z-index: 5 !important;
+  }
+
+  /* 5. НИЖНИЙ БОЛЬШОЙ КОЛЛАЖ (kollazsh) */
+  .kollazsh {
+    width: 110% !important;
+    top: 1400px !important; /* Финальный аккорд в самом низу */
+    left: 0% !important;
+    right: auto !important;
+    z-index: 1 !important;
+  }
+}
+
+
+
+
+  /* ============================================================
+   СТРАНИЦА КЕЙСА: ПЛАКАТЫ
+   ============================================================ */
+
+.posters-page .project-main {
+    align-items: start;
+}
+
+.posters-main {
+    row-gap: 56px;
+}
+
+.posters-title {
+    grid-column: 1 / 13;
+    width: 200px;
+    height: auto;
+    padding: 7px 10px;
+}
+
+.poster-item {
+    grid-column: 2 / 13;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 100%;
+}
+
+.poster-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.poster-caption {
+    margin: 0;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 1.1;
+}
+
+.poster-caption-list {
+    display: grid;
+    gap: 12px;
+}
+
+.poster-item--wide .poster-image {
+    width: 80%;
+}
+
+.poster-item--golos .poster-image,
+.poster-item--ads .poster-image,
+.poster-item--vector .poster-image {
+    width: 90%;
+}
+
+.poster-item--pink .poster-image {
+    width: 70%;
+}
+
+/* ===== MOBILE ADAPTATION: ПЛАКАТЫ ===== */
+
+@media (max-width: 900px) {
+    /* 1. Подтягиваем всю страницу к шапке */
+    .posters-page .project-main {
+        padding-top: 0 !important;   /* Убираем внутренний отступ сверху */
+        margin-top: 70px !important;  /* Минимальный зазор от шапки */
+         padding-left: 5px !important;
+        padding-right: 5px;
+    }
+
+    /* 2. Уменьшаем SVG заголовок и убираем его отступы */
+    .posters-title {
+        width: 150px !important;      /* Сделали поменьше (было 200px) */
+        padding-top: 0 !important;    /* Убираем лишний верхний падинг */
+        margin-bottom: 30px !important; /* Расстояние до первого плаката */
+        padding-left: 2px !important; /* Выравнивание по левой направляющей */
+    }
+
+    /* 3. Уплотняем сетку плакатов */
+    .posters-main {
+        row-gap: 40px !important;     /* Уменьшили разрыв между работами для компактности */
+    }
+
+    .poster-item {
+        grid-column: 1 / 13;
+        gap: 12px;                    /* Расстояние между картинкой и подписью */
+    }
+
+    /* Растягиваем все изображения на ширину экрана */
+    .poster-item--wide .poster-image,
+    .poster-item--golos .poster-image,
+    .poster-item--pink .poster-image,
+    .poster-item--ads .poster-image,
+    .poster-item--vector .poster-image {
+        width: 100% !important;
+    }
+
+    .poster-caption {
+        font-size: 15px !important;   /* Чуть уменьшим шрифт подписей */
+        padding-left: 1px;           /* Чтобы текст не лип к краю экрана */
+    }
+}
+
+/* ПУТЕВОДИТЕЛЬ */
+
+
+.project-main-trip {
+  width: 100%;
+  
+  margin: 0 auto;
+  padding: 60px 5px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.project-main img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* 1-я картинка */
+.titletrip-svg {
+  width: 100%;
+  max-width: none;
+ margin-top: -5px;
+ 
+  padding-bottom: 500px;
+
+}
+
+/* 2-я и 3-я картинки в одной строке */
+.trip-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.covertrip-png,
+.tripbook-png {
+  display: block;
+  height: auto;
+  max-height: 900px;
+  object-fit: contain;
+}
+
+/* последняя картинка */
+.trip-cards {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.bookcards-png {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ===== MOBILE ADAPTATION: ПУТЕВОДИТЕЛЬ ===== */
+
+@media (max-width: 768px) {
+  /* Убираем лишние отступы у контейнера */
+  .project-main-trip {
+    padding: 75px 5px 5px;
+    overflow-x: hidden; /* Гарантия отсутствия оверфлоу */
+  }
+
+  /* Заголовок (SVG) на мобильном */
+  .titletrip-svg {
+    width: 250% !important;
+    margin-bottom: -400px;
+    margin-left: 620px;
+  }
+
+  /* Превращаем горизонтальный ряд в вертикальный */
+  .trip-row {
+    flex-direction: column; /* Картинки встают друг под другом */
+    align-items: center;
+    gap: 5px; /* Уменьшаем расстояние между ними */
+  }
+
+  /* Настраиваем размеры обложки и книги */
+  .covertrip-png,
+  .tripbook-png {
+    width: 100% !important;
+    max-height: none !important; /* Снимаем ограничение высоты для мобилок */
+    object-fit: contain;
+  }
+
+  /* Последний блок с карточками */
+  .trip-cards {
+    margin-top: 30px;
+    width: 100%;
+  }
+
+  .bookcards-png {
+    width: 100% !important;
+  }
+
+  /* Глобально фиксируем оверфлоу в мобильной версии */
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100%;
+  }
+}
+
+
+
+
+
+/* ============================================================
+   СТРАНИЦА КЕЙСА: ИНТЕНСИВ ВШМ
+   ============================================================ */
+
+.project-main-intensive {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 20px;
+  padding-top: 54px;
+  align-items: start;
+}
+
+.case-header-title-intensive {
+  grid-column: 1 / 8;
+  font-size: 35px;
+  line-height: 1.1;
+  font-weight: normal;
+  text-align: left;
+  grid-row: 1;
+  padding: 0 10px;
+}
+
+.intensive-video-frame {
+  grid-column: 10 / 13;
+  align-self: start;
+  width: 99%;
+  aspect-ratio: 16 / 10;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #000;
+}
+
+.intensive-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  
+}
+
+.container-info-intensive {
+  grid-column: 2 / 9;
+  margin-top: -180px;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-row: 2;
+}
+
+.info-label-intensive {
+  grid-column: 1 / 5;
+  font-size: 18px;
+  line-height: 1;
+  font-weight: normal;
+  text-align: left;
+}
+
+.second-info-intensive {
+  grid-column: 1 / 5;
+  margin-top: 10px;
+}
+
+.identity-img {
+  grid-column: 1 / 13;
+  margin-top: 510px;
+  line-height: 0;
+}
+
+.identity-img img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.identity2-img {
+  grid-column: 1 / 13;
+  margin-top: 10px;
+  line-height: 0;
+}
+.identity2-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.intensive-showcase {
+  grid-column: 1 / 13;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 140px;
+}
+
+.intensive-keyvisual {
+  grid-column: 1 / 13;
+  position: relative;
+  line-height: 0;
+  padding-bottom: 50px;
+}
+
+.intensive-keyvisual img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.intensive-keyvisual-text {
+  position: absolute;
+  top: 32px;
+  z-index: 2;
+  line-height: 1;
+}
+
+.intensive-keyvisual-label {
+  font-size: 35px;
+  line-height: 1;
+  font-weight: normal;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.intensive-keyvisual-subtext {
+  padding-top: 20px;
+  padding-left: 50px;
+  font-size: 18px;
+  line-height: 1.12;
+  font-weight: normal;
+  text-align: left;
+}
+
+.intensive-presentation-title {
+  grid-column: 1 / 5;
+  padding-top: 40px;
+  padding-left: 10px;
+  font-size: 35px;
+  line-height: 1.05;
+  font-weight: normal;
+  text-align: left;
+}
+
+.intensive-presentation {
+  grid-column: 1 / 13;
+  line-height: 0;
+  padding-bottom: 100px;
+}
+
+.intensive-presentation img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ============================================================
+   РАЗДЕЛ: INTENSIVE MORE
+   ============================================================ */
+
+.intensive-more {
+  grid-column: 1 / 13;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 120px;
+  
+}
+
+.more-item {
+  --item-width: 100%;
+  --offset-x: 0px;
+  --offset-y: 0px;
+
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: min(var(--item-width), 100%);
+  margin-left: var(--offset-x);
+  margin-top: var(--offset-y);
+  line-height: 0;
+}
+
+.more-item img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Индивидуальные настройки */
+
+.merchvshm-title {
+  grid-column: 1 / 5;
+  padding-top: 40px;
+  padding-left: 10px;
+  font-size: 35px;
+  line-height: 1.05;
+  font-weight: normal;
+  text-align: left;
+  }
+
+.more-item.hoodies {
+  --item-width: 92%;
+  --offset-x: 0px;
+  --offset-y: 0px;
+}
+
+.more-item.part1 {
+  --item-width: 78%;
+  --offset-x: -36px;
+  --offset-y: -10px;
+}
+
+.more-item.part2 {
+  --item-width: 84%;
+  --offset-x: 24px;
+  --offset-y: -1120px;
+}
+
+
+/* ============================================================
+   РАЗДЕЛ: INTENSIVE SMM
+   ============================================================ */
+
+.intensive-smm {
+  grid-column: 1 / 13;
+}
+
+.intensive-smm-title {
+  font-size: 35px;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: lowercase;
+}
+
+.intensive-smm-inner {
+  width: 87%;
+  margin: 0 auto;
+}
+
+.intensive-smm-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+}
+
+.intensive-smm-social {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+}
+
+.intensive-smm-social-item {
+  display: block;
+  width: 90%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.intensive-smm-videos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.intensive-smm-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #000;
+}
+
+.intensive-smm-video.small {
+  height: clamp(220px, 22vw, 360px);
+  object-fit: cover;
+}
+
+.intensive-smm-video.wide {
+  grid-column: 1 / -1;
+}
+
+.merchvshm-title {
+  width: 100%;
+  margin: 0;
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 1;
+  text-transform: lowercase;
+}
+
+
+/* ===== MOBILE ADAPTATION: ИНТЕНСИВ ВШМ (ПОЛНЫЙ ИСПРАВЛЕННЫЙ КОД) ===== */
+
+@media (max-width: 768px) {
+    /* 1. ГЛОБАЛЬНЫЙ СБРОС И ЕДИНЫЙ РИТМ СЕКЦИЙ */
+    .project-main-intensive,
+    .intensive-showcase,
+    .intensive-more,
+    .intensive-smm {
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: 1fr !important;
+        gap: 0 !important;
+        margin-top: 40px !important; /* Единое расстояние между блоками */
+        margin-bottom: 0 !important;
+        padding: 0 5px !important; /* Единая левая направляющая */
+    }
+
+    /* Подтягиваем самое начало страницы к шапке */
+    .project-main-intensive {
+        margin-top: 0px !important;
+        padding-top: 65px !important;
+        left: 0px;
+    }
+    .case-header-title-intensive {
+        font-size: 30px !important; 
+        font-weight: normal !important;
+        line-height: 1.2 !important;
+        margin-top: 0 !important;
+        margin-bottom: 15px !important; /* Расстояние от заголовка до контента */
+        padding-left: 0px;
+    }
+
+    /* 2. ЕДИНЫЙ СТИЛЬ ЗАГОЛОВКОВ (СТРОГО 16px) */
+    .intensive-keyvisual-label, 
+    .intensive-presentation-title, 
+    .merchvshm-title, 
+    .intensive-smm-title,
+    .intensive-keyvisual-text {
+        font-size: 16px !important; 
+        font-weight: normal !important;
+        line-height: 1.2 !important;
+        margin-top: 20 !important;
+        margin-bottom: 15px !important; /* Расстояние от заголовка до контента */
+        padding: 0 !important;
+        text-align: left !important;
+        text-transform: none !important;
+        grid-column: 1 / -1 !important;
+    }
+
+    /* 3. РАЗДЕЛ SMM (ИСПРАВЛЕННЫЙ: ВИДЕО ВЕРТИКАЛЬНО) */
+    .intensive-smm-layout {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+
+    /* Скрины из телеграма оставляем по 2 в ряд */
+    .intensive-smm-social {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10px !important;
+        width: 100% !important;
+    }
+
+    .intensive-smm-social-item {
+        width: 100% !important;
+    }
+
+    /* Видео ставим строго друг за другом по вертикали */
+    .intensive-smm-videos {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+        width: 100% !important;
+    }
+
+    .intensive-smm-video {
+        width: 100% !important;
+        height: auto !important; /* Родной формат видео */
+        max-height: none !important;
+        margin: 0 !important;
+        border-radius: 5px;
+        
+    }
+
+    .intensive-smm-video.small {
+        height: auto !important;
+    }
+
+    /* 4. РАЗДЕЛ МЕРЧА (Убираем гигантские дыры) */
+    .intensive-more {
+        gap: 25px !important;
+    }
+
+    .more-item {
+        width: 100% !important;
+        margin: 0 !important; /* Убираем десктопные -1120px */
+        transform: none !important; 
+        position: relative !important;
+        left: 0 !important;
+        top: 0 !important;
+        display: block !important;
+    }
+
+    .more-item img {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    /* 5. ТЕКСТОВЫЕ БЛОКИ И ОПИСАНИЯ */
+    .intensive-keyvisual-subtext,
+    .info-label-intensive,
+    .second-info-intensive,
+    .container-info-intensive {
+        font-size: 16px !important;
+        line-height: 1.3 !important;
+        margin-top: 0 !important;
+        margin-bottom: 10px !important;
+        padding: 0 !important;
+        grid-column: 1 / -1 !important;
+        max-width: 100% !important;
+    }
+
+    /* 6. ОСТАЛЬНЫЕ ВИЗУАЛЬНЫЕ БЛОКИ (Идентичность, Презентации) */
+    .intensive-video-frame,
+    .intensive-presentation,
+    .identity-img,
+    .identity2-img,
+    .intensive-keyvisual {
+        width: 100% !important;
+        margin: 0 0 20px 0 !important;
+        padding: 0 !important;
+        position: relative !important;
+    }
+
+    .intensive-presentation img,
+    .identity-img img,
+    .identity2-img img {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    /* 7. ФИНАЛЬНЫЕ ПРАВКИ */
+    .vtb-intro-image { display: none !important; }
+
+    html, body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+    }
+}
+
+
+
+/* 3д */
+
+.project-main-3d {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 20px;
+  padding-top: 50px;
+}
+
+.intro-3d {
+  grid-column: 1 / 13;
+  position: relative;
+  min-height: 1050px;
+}
+
+/* текст */
+.intro-3d-text {
+  position: relative;
+  z-index: 2;
+  grid-column: 1 / 6;
+  padding-left: 10px;
+}
+
+.intro-3d-title {
+  margin: 0;
+  font-size: 36px;
+  line-height: 1.08;
+  font-weight: normal;
+  text-align: left;
+}
+
+.intro-3d-description {
+  margin: 14px 0 0 82px;
+  max-width: 520px;
+  font-size: 18px;
+  line-height: 1.12;
+  text-align: left;
+}
+
+/* картинка */
+.intro-3d-image {
+  position: absolute;
+  top: -80px;
+  right: calc(-1 * var(--page-padding));
+  width: 100%;
+  z-index: 1;
+}
+
+.intro-3d-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  
+}
+
+.objects-3d-gallery {
+  grid-column: 1 / 13;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+  gap: 120px;
+}
+
+/*
+  Управление каждой картинкой:
+  --item-max: ширина контейнера (например 62%, 90%, 100vw)
+  --img-scale: дополнительный масштаб внутри контейнера
+  --y-offset: вертикальный сдвиг БЕЗ потери потока (через margin-top)
+*/
+.objects-3d-item {
+  --item-max: 100%;
+  --img-scale: 1;
+  --y-offset: 0px;
+
+  width: min(100%, var(--item-max));
+  margin-top: var(--y-offset);
+  display: flex;
+  justify-content: center;
+  line-height: 0;
+}
+
+.objects-3d-img {
+  display: block;
+  width: calc(100% * var(--img-scale));
+  max-width: none;
+  height: auto;
+}
+
+.set1 { --item-max: 70%; }
+.set2 { --item-max: 90%; }
+
+.set3 {
+  --item-max: 62%;
+  --y-offset: -40px;
+}
+
+.glasset {
+  --item-max: 52%;
+  --y-offset: -160px;
+}
+
+.set4 {
+  --item-max: 62%;
+  --y-offset: -120px;
+}
+
+.full-bleed-item {
+  --item-max: 100vw;
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.full-bleed-item .objects-3d-img {
+  width: 100%;
+}
+
+.group3d {
+  --y-offset: -120px;
+}
+
+.finalset {
+  --y-offset: -220px;
+}
+
+.objects-3d-demo {
+  --item-max: 100vw;
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  margin-top: -70px;
+}
+
+/* ===== MOBILE ADAPTATION: 3D PAGE ===== */
+
+@media (max-width: 768px) {
+    /* 1. ГЛАВНЫЙ КОНТЕЙНЕР */
+    .project-main-3d {
+        display: flex !important;
+        flex-direction: column !important;
+        padding-top: 70px !important; /* Подтягиваем к шапке */
+        padding-left: 5px !important;
+        padding-right: 5px;
+        gap: 0 !important;
+    }
+
+    /* 2. ИНТРО-БЛОК (Заголовок и главная картинка) */
+    .intro-3d {
+        min-height: auto !important; /* Убираем 1050px */
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 0 0px !important;
+    }
+
+    .intro-3d-text {
+        grid-column: 1 / -1 !important;
+        padding-left: 0 !important;
+        z-index: 5 !important;
+    }
+
+    .intro-3d-title {
+        font-size: 28px !important;
+        line-height: 1.05 !important;
+        margin-bottom: 10px !important;
+    }
+
+    .intro-3d-description {
+        margin: 0 !important; /* Убираем отступ 82px слева */
+        font-size: 16px !important;
+        line-height: 1.3 !important;
+        max-width: 100% !important;
+    }
+
+    .intro-3d-image {
+        position: relative !important; /* Картинка теперь под текстом, а не под ним */
+        top: 0 !important;
+        right: auto !important;
+        width: 110% !important; /* Чуть шире экрана для эффекта */
+        margin-left: -5% !important;
+        margin-top: 20px !important;
+        z-index: 1 !important;
+    }
+
+    /* 3. ГАЛЕРЕЯ ОБЪЕКТОВ */
+    .objects-3d-gallery {
+        margin-top: 40px !important;
+        gap: 40px !important; /* Уменьшаем гигантский зазор 120px */
+        padding: 0 10px !important;
+    }
+
+    /* СБРОС ВСЕХ ОТСТУПОВ И ШИРИНЫ ДЛЯ КАРТИНОК */
+    .objects-3d-item {
+        /* Принудительно обнуляем переменные десктопа */
+        --item-max: 100% !important;
+        --y-offset: 0px !important;
+        
+        width: 100% !important;
+        margin-top: 0 !important;
+        transform: none !important;
+    }
+
+    .objects-3d-img {
+        width: 100% !important;
+        --img-scale: 1 !important;
+    }
+
+    /* Фулл-блид элементы (на всю ширину) */
+    .full-bleed-item {
+        width: 100vw !important;
+        margin-left: -10px !important; /* Компенсируем padding родителя */
+        margin-right: -10px !important;
+        margin-top: 0 !important;
+    } 
+    .objects-3d-demo {
+        width: 100vw !important;
+        margin-left: 0px !important; /* Компенсируем padding родителя */
+        margin-right: 0px !important;
+        margin-top: 0 !important;
+    }
+
+    /* 4. ЕДИНЫЙ КЕГЛЬ ДЛЯ ТЕКСТОВЫХ ПОДПИСЕЙ */
+    /* Если в 3D есть подзаголовки, задаем им 16px */
+    .objects-3d-item figcaption, 
+    .objects-3d-label {
+        font-size: 16px !important;
+        margin-top: 10px !important;
+        text-align: left !important;
+    }
+
+    /* Фикс скролла */
+    html, body {
+        overflow-x: hidden !important;
+    }
+}
+
+/* ============================================================
+   СТРАНИЦА КЕЙСА: СНЕДЬ
+   ============================================================ */
+
+.sned-main {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+    padding: 55px 6px 0px;
+}
+
+.sned-hero {
+    grid-column: 1 / 13;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: start;
+}
+
+.sned-hero-text {
+    grid-column: 1 / 7;
+
+}
+
+.sned-title {
+    font-size: 35px;
+    font-weight: normal;
+    line-height: 0.95;
+    grid-column: 1 / 5;
+}
+
+.sned-hero-pa  {
+    font-size: 18px;
+    line-height: 1;
+    grid-column: 2 / 6;
+    margin-top: -45px;
+}
+
+.sned-hero-par  {
+    font-size: 18px;
+    line-height: 1;
+    grid-column: 1 / 5;
+    margin-top: -35px;
+}
+
+.sned-hero-cover {
+    grid-column: 9 / 13;
+     transform: translateY(-160px); /* вверх */
+}
+
+.sned-hero-cover img,
+.sned-layout-image {
+    width: 100%;
+    display: block;
+    height: auto;
+
+}
+
+.sned-layout-flow {
+    grid-column: 1 / 13;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+}
+
+
+
+/* Контейнер фрейма делаем базой для позиционирования */
+.sned-frame {
+    position: relative; 
+    width: 100%;
+    display: flex; /* ОБЯЗАТЕЛЬНО: без этого картинки не будут уходить вправо */
+}
+
+/* Общие стили для подписей */
+.sned-label {
+    position: absolute;
+    top: 0; /* Прижимаем к верху картинки */
+    display: flex;
+    flex-direction: row; /* Номер и текст в строку */
+    gap: 40px; /* Расстояние между цифрой и названием как на скрине */
+    font-size: 18px; /* Подбери под свой глаз */
+    line-height: 1.2;
+    pointer-events: none;
+}
+
+/* Номер делаем чуть жирнее или просто отделяем */
+.sned-num {
+    font-weight: 500;
+}
+
+/* Позиция для 1 и 3 разделов (справа) */
+.label-right {
+    right: 20px; /* Отступ от правого края экрана */
+    text-align: right;
+    flex-direction: row; 
+}
+
+/* Позиция для 2 и 4 разделов (слева) */
+.label-left {
+    left: 20px; /* Отступ от левого края экрана */
+    text-align: left;
+    flex-direction: row;
+}
+.sned-layout-image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* 1-й разворот после обложки — слева */
+.sned-frame--zavtrak {
+    justify-content: flex-start;
+}
+
+.sned-frame--zavtrak .sned-layout-image {
+    width: 54%;
+    margin-left: 10px;
+}
+
+/* 2-й разворот — правее */
+.sned-frame--obed {
+    justify-content: flex-end;
+}
+
+.sned-frame--obed .sned-layout-image {
+    width: 64%;
+    margin-right: 6px;
+    transform: translateY(-10px);
+}
+
+/* 3-й разворот — снова слева, шире */
+.sned-frame--uzin {
+    justify-content: flex-start;
+}
+
+.sned-frame--uzin .sned-layout-image {
+    width: 66%;
+    margin-left: 8px;
+    transform: translateY(-6px);
+}
+
+/* 4-й разворот — правее и чуть уже */
+.sned-frame--kchayu {
+    justify-content: flex-end;
+}
+
+.sned-frame--kchayu .sned-layout-image {
+    width: 58%;
+    margin-right: 14px;
+    transform: translateY(-4px);
+}
+
+
+/* ===== MOBILE ADAPTATION: СНЕДЬ ===== */
+
+@media (max-width: 768px) {
+    /* 1. ПОДТЯГИВАЕМ СТРАНИЦУ К ШАПКЕ */
+    .sned-main {
+        grid-template-columns: 1fr !important;
+        /* Делаем минимальный отступ сверху, как в плакатах */
+        padding: 80px 5px 5px !important; 
+        gap: 20px !important;
+    }
+
+    .sned-hero {
+        grid-template-columns: 1fr !important;
+        /* Убираем зазор между элементами сетки, будем управлять ими через margin */
+        gap: 0px !important; 
+    }
+
+    /* 2. ЗАГОЛОВОК (СНЕДЬ...) */
+    .sned-title {
+        grid-column: 1 / -1 !important;
+        font-size: 28px !important;
+        line-height: 1.0 !important;
+        margin-top: -30px !important;      /* Вплотную к верхнему краю контейнера */
+        margin-bottom: 1px !important; /* Расстояние до ПЕРВОГО абзаца */
+        padding: 0 !important;
+    }
+
+    /* 3. ТЕКСТ (Абзацы) */
+    .sned-hero-pa,
+    .sned-hero-par {
+        grid-column: 1 / -1 !important;
+        max-width: 100% !important;
+        font-size: 14px !important;
+        line-height: 1.3 !important;
+        
+        /* Убираем все отступы сверху и делаем маленькие снизу */
+        margin-top: 0 !important; 
+        margin-bottom: 12px !important; /* Уменьшили расстояние между абзацами */
+        padding: 0 !important;
+    }
+
+    /* Последний абзац перед картинкой можно сделать чуть свободнее */
+    .sned-hero-par {
+        margin-bottom: 25px !important;
+    }
+
+    /* 4. ОБЛОЖКА */
+    .sned-hero-cover {
+        grid-column: 1 / -1 !important;
+        transform: translateY(0) !important;
+        margin-top: 0 !important;
+    }
+
+    /* 5. ПРОВЕРКА РАЗВОРОТОВ */
+    .sned-layout-flow {
+        gap: 30px !important;
+    }
+
+    .sned-frame--zavtrak .sned-layout-image,
+    .sned-frame--obed .sned-layout-image,
+    .sned-frame--uzin .sned-layout-image,
+    .sned-frame--kchayu .sned-layout-image {
+        width: 100% !important;
+        margin: 0 !important;
+        transform: translateY(0) !important;
+    }
+}
+
+/* ============================================================
+   СТРАНИЦА КЕЙСА: СПУТНИК
+   ============================================================ */
+
+.sputnik-main {
+    gap: 0px;
+}
+
+.sputnik-hero {
+    grid-column: 1 / 13;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    background: #ffffff;
+    position: relative;
+    
+}
+
+.sputnik-text-block {
+    grid-column: 1 / 9;
+    padding-left: 10px;
+    max-width: 640px;
+}
+
+.sputnik-title {
+    font-size: 35px;
+    line-height: 1;
+    letter-spacing: 0;
+    
+}
+
+.sputnik-lead,
+.sputnik-text {
+    font-size: 18px;
+    line-height: 0.95;
+    margin-top: -30px;
+    max-width: 620px;
+}
+
+.sputnik-lead {
+    margin-left: 120px;
+}
+
+.sputnik-text {
+    margin-top: -15px;
+    padding-bottom: 500px;
+}
+
+.sputnik-video {
+    position: absolute;
+    top: 15px;
+    right: 16px;
+    width: 500px;
+    height: 700px;
+    object-fit: cover;
+    display: block;
+}
+
+.sputnik-gallery {
+    grid-column: 1 / 13;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background: #ececec;
+}
+
+.sputnik-media {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.sputnik-media.full-bleed {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+}
+
+
+/* ===== MOBILE ADAPTATION: СПУТНИК ===== */
+
+@media (max-width: 768px) {
+    /* 1. ГЛАВНЫЙ КОНТЕЙНЕР */
+    .sputnik-hero {
+        display: flex !important;
+        flex-direction: column !important;
+        padding-left: 5px !important;
+        padding-right: 5px;
+        gap: 20px !important;
+        height: auto !important; /* Убираем фиксированную высоту, если была */
+        top: 0px;
+    }
+
+    /* 2. ТЕКСТОВЫЙ БЛОК */
+    .sputnik-text-block {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        
+    }
+
+    .sputnik-title {
+        font-size: 28px !important;
+        line-height: 1.1 !important;
+        margin-bottom: 20px !important;
+    }
+
+    /* Исправляем наслоение текста */
+    .sputnik-lead,
+    .sputnik-text {
+        font-size: 16px !important;
+        line-height: 1.4 !important;
+        margin-top: 0 !important; /* УБИРАЕМ отрицательный маржин */
+        margin-left: 0 !important; /* Убираем отступ 120px, выравниваем в край */
+        max-width: 100% !important;
+        padding-bottom: 20px !important;
+    }
+
+    /* 3. ВИДЕО (Переводим из absolute в поток) */
+    .sputnik-video {
+        position: relative !important; /* Вырываем из абсолютного позиционирования */
+        top: 0 !important;
+        right: 0 !important;
+        width: 100% !important; /* Видео на всю ширину экрана */
+        height: auto !important;
+        max-height: 500px !important;
+        margin-bottom: 30px !important;
+        object-fit: cover !important;
+        border-radius: 0 !important; /* Если были скругления */
+    }
+
+    /* 4. ГАЛЕРЕЯ */
+    .sputnik-gallery {
+        background: #ececec !important;
+        width: 100% !important;
+    }
+
+    .sputnik-media.full-bleed {
+        width: 100% !important;
+        margin-left: 0 !important; /* Сбрасываем центрирование vw */
+    }
+
+    /* 5. ОБЩИЕ ПРАВИЛА ЧИСТОТЫ */
+    html, body {
+        overflow-x: hidden !important;
+    }
+}
+
+/* ============================================================
+   СТРАНИЦА МОУШН-ВИДЕО
+   ============================================================ */
+.motion-main {
+    grid-column: 1 / 13;
+}
+
+.motion-main .case-header-title {
+    grid-column: 1 / 13;
+    margin-bottom: 20px;
+  padding-left: 6px;
+}
+
+.motion-row {
+    grid-column: 1 / 13;
+    display: flex;
+    justify-content: center;
+    gap: 56px;
+    margin-bottom: 56px;
+}
+
+.motion-row-single {
+    gap: 0;
+}
+
+.motion-video-frame {
+    width: min(280px, 42vw);
+}
+
+.motion-video-frame-horizontal {
+    width: auto;
+}
+
+
+.motion-video {
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+    display: block;
+}
+
+
+.motion-video-horizontal {
+    width: auto;
+    height: min(498px, 72vh);
+    aspect-ratio: auto;
+    object-fit: contain;
+}
+
+/* ===== MOBILE ADAPTATION: МОУШН-ВИДЕО ===== */
+
+@media (max-width: 768px) {
+    /* 1. ПОДТЯГИВАЕМ КОНТЕНТ К ШАПКЕ */
+    .motion-main {
+        padding-top: 50px !important; /* Минимальный зазор от линии шапки */
+    }
+
+    .motion-main .case-header-title {
+        margin-top: 0 !important;      /* Убираем внешний отступ заголовка */
+        padding-top: 0 !important;     /* Убираем внутренний отступ заголовка */
+        font-size: 30px !important;    /* Немного уменьшаем кегль для мобилки */
+        line-height: 1.1 !important;
+        padding-left: 8px !important;
+    }
+
+    /* 2. ГОРИЗОНТАЛЬНЫЕ ВИДЕО В РАЗМЕР ЭКРАНА */
+    .motion-video-frame-horizontal {
+        width: 100% !important;        /* Теперь контейнер занимает всю ширину */
+        max-width: 100% !important;
+        padding: 0 5px !important;    /* Небольшой отступ от краев экрана */
+    }
+
+    .motion-video-horizontal {
+        width: 100% !important;        /* Видео растягивается на 100% контейнера */
+        height: auto !important;       /* Сбрасываем десктопные 498px/72vh */
+        aspect-ratio: 16 / 9;          /* Задаем правильный горизонтальный формат */
+        object-fit: cover !important;  /* Чтобы видео заполняло рамку */
+    }
+
+    /* 3. ВЕРТИКАЛЬНЫЕ ВИДЕО (ДЛЯ СПРАВКИ) */
+    .motion-row {
+        flex-direction: column !important; /* Выстраиваем видео в колонку */
+        align-items: center !important;
+        gap: 20px !important;
+        margin-bottom: 40px !important;
+    }
+
+    .motion-video-frame {
+        width: 85% !important;         /* Вертикальные видео делаем чуть крупнее */
+    }
+
+    /* Фикс оверфлоу */
+    html, body {
+        overflow-x: hidden !important;
+    }
+}
+
+.preview3-img.active {
+    opacity: 1;
+}
+
+.project-previews3 {
+    grid-column: 7 / 13;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    min-height: 400px;
+}
+
+.preview4-img {
+    width: 20%;
+    height: auto;
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out;
+    pointer-events: none;
+    margin-left: 300px;
+}
+
+.preview4-img.active {
+    opacity: 1;
+}
+
+/* ============================================================
+   ВТБ — ВНУТРЕННИЕ И ВНЕШНИЕ КОММУНИКАЦИИ
+   ============================================================ */
+
+.vtb-intro-section {
+    grid-column: 1 / 13;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+    margin-bottom: 120px;
+    align-items: start; /* Текст и картинка выровнены по верху */
+}
+
+/* Заголовок на всю левую половину или чуть шире */
+.vtb-main-title {
+    grid-column: 1 / 6; 
+    font-size: 35px;
+    line-height: 1;
+    font-weight: normal;
+    padding-left: 6px;
+    margin-top: 2px;
+}
+
+/* ЭТОТ БЛОК СОЗДАЕТ НУЖНЫЙ ОТСТУП */
+.vtb-intro-details {
+    /* Начинаем с 5-й колонки, чтобы создать "ступеньку" под заголовком */
+    grid-column: 3 / 8; 
+    display: flex;
+    flex-direction: column;
+    margin-top: -50px;
+    
+}
+
+.vtb-intro-description {
+    font-size: 18px;
+    line-height: 1;
+    margin: 0;
+}
+
+.vtb-nda-note {
+    font-size: 18px;
+    line-height: 1;
+    color: #000;
+    opacity: 1; /* Оставляем четким как на макете */
+}
+
+/* Картинка обл.webp */
+.vtb-intro-image {
+    /* Занимает правую часть и может "наплывать" на сетку */
+    grid-column: 8 / 13; 
+    margin: 0;
+    margin-top: -120px; /* Приподнимаем чуть выше, если нужно как на макете */
+    margin-right: -110px;
+}
+
+.vtb-intro-image img {
+    width: 90%;
+    height: auto;
+    display: block;
+}
+
+
+
+/* ============================================================
+   БЛОК С ДАЙДЖЕСТАМИ (КАРТОЧКИ) — ЦЕНТРИРОВАННЫЙ
+   ============================================================ */
+
+.vtb-digest-section {
+    grid-column: 1 / 13; /* Растягиваем секцию на всю ширину страницы */
+    display: grid;
+    grid-template-columns: repeat(12, 1fr); /* Создаем внутри сетку на 12 колонок */
+    gap: 20px;
+    margin-top: 10px;
+    align-items: start;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.vtb-digest-title {
+    grid-column: 1 / 13;
+    font-size: 18px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    font-family: 'Omega UI', sans-serif !important;
+}
+
+/* Настройки для центрального блока с картинкой */
+.vtb-digest-center {
+    /* Центрируем картинку по колонкам */
+    /* В сетке из 12 колонок, отступ в 2 колонки слева и 2 справа даст 8 колонок по центру */
+    grid-column: 1 / 13; 
+    
+    margin: 0; /* Убираем браузерные отступы */
+    padding-left: 0;
+    height: auto; /* Чтобы высота диктовалась пропорциями картинки */
+    display: flex;
+    justify-content: center; /* На всякий случай флексом внутри центрируем */
+}
+
+.vtb-digest-center img {
+    display: block; /* Убираем микро-зазор под картинкой */
+    width: 100%;    /* Растягиваем картинку на всю ширину блока (на 8 колонок) */
+    height: auto;   /* Пропорции сохраняются идеально */
+    object-fit: contain; /* Картинка никогда не обрезается */
+}
+
+/* ===== ВТОРОЙ РАЗДЕЛ (8 МАРТА) ===== */
+
+/* Общий контейнер на все 12 колонок (или как у тебя в сетке) */
+.vtb-second-section {
+    grid-column: 1 / 13;
+    margin-top: 120px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.vtb-march8-container {
+    position: relative; /* База для позиционирования текста */
+    display: block;
+    width: 100%;
+   
+}
+
+/* Картинка идет фоном */
+.vtb-march8-top {
+    margin: 0;
+    width: 100%;
+    
+}
+
+.vtb-march8-top img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Накладываем заголовок СВЕРХУ */
+.vtb-second-title {
+    position: absolute; /* Вырываем из потока */
+    top: 0px;          /* Отступ от верхнего края картинки */
+    left: 0px;         /* Отступ от левого края картинки */
+    z-index: 2;         /* Чтобы текст был выше картинки */
+    
+    /* Настройки шрифта из прошлых шагов */
+    font-size: 18px; 
+    font-weight: normal;
+    color: #000;        /* Поменяй на #fff, если картинка темная */
+    max-width: 400px;   /* Ограничиваем ширину, чтобы текст не шел во всю длину */
+    margin: 0;
+}
+
+/* ===== РАЗДЕЛ С ОБЛОЖКАМИ НОВОСТЕЙ ===== */
+
+.vtb-news-section {
+    grid-column: 1 / 13; /* Секция занимает всю ширину от края до края контента */
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+    margin-top: 120px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.vtb-news-title {
+    grid-column: 1 / 13;
+    font-size: 20px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.vtb-news-grid {
+    grid-column: 1 / 13; /* Контейнер с картинками на все 12 колонок */
+    display: grid;
+    /* Создаем 3 равные колонки внутри */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; /* Расстояние между картинками */
+}
+
+.vtb-news-item {
+    margin: 0;
+    padding: 0;
+}
+
+.vtb-news-item img {
+    width: 100%; /* Картинка растягивается на всю отведенную ей треть */
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+
+/* Принудительный сброс жирности для страницы ВТБ */
+.vtb-main h1, 
+.vtb-main h2, 
+.vtb-intro-title h1, 
+.vtb-intro-title-right h1,
+.vtb-digest-title,
+.vtb-second-title {
+    font-family: 'Omega UI', sans-serif !important;
+    font-weight: 400 !important; /* или normal */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.02em; /* Немного сужаем для сходства с макетом */
+}
+
+/* ===== РАЗДЕЛ ПРЕЗЕНТАЦИИ ДЕМО ===== */
+
+.vtb-demo-section {
+    grid-column: 1 / 13;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+    margin-top: 140px; /* Увеличиваем отступ между крупными блоками */
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.vtb-demo-title {
+    grid-column: 1 / 5; /* Заголовок занимает левую часть (1-4 колонки) */
+    font-size: 20px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.vtb-demo-content {
+    grid-column: 1 / 13; /* Контейнер на всю ширину, чтобы внутри центрировать */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрируем всё содержимое по горизонтали */
+    gap: 20px; /* Расстояние между двумя картинками */
+}
+
+.vtb-demo-item {
+    /* Чтобы картинки были по центру и не на всю ширину экрана, 
+       ограничиваем их ширину до 8 колонок (примерно 66-70%) */
+    width: 66.6%; 
+    margin: 0;
+    padding: 0;
+}
+
+.vtb-demo-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Дополнительный отступ сверху для конкретной картинки, если нужно больше воздуха */
+.vtb-demo-extra-margin {
+    margin-top: 20px; /* Суммируется с gap, давая визуально больший разрыв */
+}
+
+/* Все остальные свойства (центрирование и ширина) подтянутся 
+   автоматически из селектора .vtb-demo-item, который мы написали выше */
+
+
+
+/* ===== РАЗДЕЛ ПРЕЗЕНТАЦИЙ ВШМ И ВТБ ===== */
+
+.vtb-presentation-section {
+    grid-column: 1 / 13;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+    margin-top: 140px;
+    align-items: start;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.vtb-presentation-header {
+    /* Заголовок занимает первые 4 колонки, как в предыдущих блоках */
+    grid-column: 1 / 13;
+}
+
+.vtb-presentation-title {
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 400 !important;
+    margin-bottom: 10px;
+}
+
+.vtb-presentation-image {
+    /* Картинка начинается с 5-й колонки и упирается в 12-ю (правый край) */
+    grid-column: 2 / 12;
+    margin: 0;
+    padding: 0;
+}
+
+.vtb-presentation-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+/* ===== ФИНАЛЬНЫЙ БЛОК ОТЧЕТНОСТИ ===== */
+
+.vtb-final-section {
+    grid-column: 1 / 13;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+    margin-top: 140px; /* Тот же отступ для ритма */
+    margin-bottom: 160px; /* Увеличенный отступ в самом конце страницы */
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.vtb-final-title {
+    grid-column: 1 / 5; /* Позиция заголовка как во всем проекте */
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: 400 !important;
+    margin-bottom: 10px;
+}
+
+.vtb-final-content {
+    grid-column: 1 / 13;
+    display: flex;
+    justify-content: center; /* Центрируем картинку по горизонтали */
+}
+
+.vtb-final-item {
+    width: 66.6%; /* Ширина в 8 колонок для баланса с предыдущим блоком */
+    margin: 0;
+}
+
+.vtb-final-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+/* По умолчанию скрываем мобильные переносы */
+.mobile-only {
+    display: none;
+}
+
+/* На десктопе оставляем обычные переносы, если они нужны */
+.desktop-only {
+    display: inline;
+}
+
+
+/* ===== MOBILE ADAPTATION: ВТБ (FINAL FULL CODE) ===== */
+
+@media (max-width: 768px) {
+    /* 1. ГЛОБАЛЬНЫЙ СБРОС СЕТОК ДЛЯ ВСЕХ СЕКЦИЙ */
+    .vtb-intro-section, 
+    .vtb-digest-section, 
+    .vtb-second-section, /* Добавили сюда, чтобы убрать разрыв в 120px */
+    .vtb-news-section, 
+    .vtb-demo-section, 
+    .vtb-presentation-section, 
+    .vtb-final-section {
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: 1fr !important;
+        gap: 0 !important;
+        margin-top: 30px !important; /* Уменьшили стандартный разрыв между блоками */
+        margin-bottom: 0 !important;
+        padding: 0 5px !important; /* Единая левая направляющая */
+    }
+    /* Включаем перенос там, где он нужен для мобилки */
+    .mobile-only {
+        display: inline;
+    }
+
+    /* Выключаем десктопный перенос, если он портит вид на узком экране */
+    .desktop-only {
+        display: none;
+    }
+
+
+    /* 2. ИНТРО (САМЫЙ ВЕРХ) — ПОДТЯГИВАЕМ К ШАПКЕ */
+    .vtb-intro-section {
+        margin-top: 0px !important;
+        padding-top: 0px !important;
+    }
+
+    .vtb-main-title {
+        width: 100% !important;
+        font-size: 28px !important;
+        line-height: 1.05 !important;
+        margin-top: 0 !important;
+        margin-bottom: 12px !important; /* Расстояние до текста */
+        padding-left: 0 !important;
+    }
+
+    /* ТЕКСТ СТРОГО ПОД ЗАГОЛОВКОМ */
+    .vtb-intro-details {
+        width: 100% !important;
+        grid-column: 1 / -1 !important;
+        margin-top: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 8px !important; /* Уменьшенное расстояние между абзацами */
+    }
+
+    .vtb-intro-description {
+        font-size: 16px !important;
+        line-height: 1.3 !important;
+        margin-bottom: 0px !important; 
+        padding-bottom: 0 !important;
+    } 
+    .vtb-nda-note {
+        font-size: 16px !important;
+        line-height: 1.3 !important;
+        margin-bottom: 100px !important; 
+        padding-bottom: 0 !important;
+    }
+
+    .vtb-intro-image {
+        display: none !important;
+    }
+
+    /* 3. ЕДИНЫЙ СТИЛЬ ПОДЗАГОЛОВКОВ (16px) */
+    .vtb-digest-title, 
+    .vtb-news-title, 
+    .vtb-demo-title, 
+    .vtb-presentation-title,
+    .vtb-final-title,
+    .vtb-second-title {
+        font-size: 16px !important;
+        line-height: 1.2 !important;
+        margin-bottom: 12px !important;
+        margin-top: 0 !important;
+        padding: 0 !important;
+        position: relative !important; 
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        text-align: left !important;
+    }
+
+    /* 4. СПЕЦИФИЧЕСКИЙ ФИКС ДЛЯ "8 МАРТА" (УБИРАЕМ РАЗРЫВ) */
+    .vtb-second-section {
+        margin-top: 20px !important; /* Минимальный зазор после SMM-карточек */
+    }
+
+    .vtb-march8-container {
+        width: 100% !important;
+        margin: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
+
+    /* 5. НОВОСТИ — В СТРОЧКУ (3 КОЛОНКИ) */
+    .vtb-news-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important; 
+        gap: 6px !important; 
+        width: 100% !important;
+        margin-top: 5px !important;
+    }
+
+    /* 6. КАРТИНКИ (ВСЕ БЛОКИ) — ПОЛНОЭКРАННЫЕ */
+    .vtb-digest-center,
+    .vtb-demo-content,
+    .vtb-demo-item,
+    .vtb-presentation-image,
+    .vtb-final-content,
+    .vtb-final-item {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .vtb-digest-center img,
+    .vtb-demo-item img,
+    .vtb-presentation-image img,
+    .vtb-final-item img,
+    .vtb-news-item img,
+    .vtb-march8-top img {
+        width: 100% !important;
+        height: auto !important;
+        margin: 0 !important;
+        object-fit: contain !important;
+    }
+
+    /* Убираем лишние отступы у демо */
+    .vtb-demo-extra-margin {
+        margin-top: 0 !important;
+    }
+
+    /* 7. ФИКС ГОРИЗОНТАЛЬНОГО СКРОЛЛА */
+    html, body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+    }
 }

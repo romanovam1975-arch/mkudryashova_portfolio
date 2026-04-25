@@ -1,35 +1,71 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>путеводитель — Кейс</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>путеводитель — Кейс</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body class="project-page">
 
-    <nav class="fixed-nav">
-        <div class="nav-content">
-            <a href="index.html" class="nav-link">на главную</a>
-            <span class="nav-title">проект: путеводитель</span>
-            <hr class="nav-line">
-            <a href="#" class="nav-link">дальше</a>
-        </div>
-    </nav>
- <main class="project-main">
-   </section>
-        <img src="assets/triptext-pic.svg" alt="titletrip-svg" class="titletrip-svg">
-        
-        <div class="covertrip-container">
-            <img src="assets/trippart2.png" alt="covertrip-png" class="covertrip-png">
-            <img src="assets/verstka.png" alt="tripbook-png" class="tripbook-png">
+  <nav class="fixed-nav">
+    <div class="nav-content">
+      <a href="index.html" class="nav-link">на главную</a>
+      <span class="nav-title">проект: путеводитель</span>
+      <hr class="nav-line">
+      <a href="#" class="nav-link js-next-project">дальше</a>
+    </div>
+  </nav>
 
-        </div>
-        
-        <div class="bookcards-container"><img src="assets/tripcards.png" alt="bookcards-png" class="bookcards-png"></div>
-    <section>
+  <main class="project-main-trip">
+    <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/triptext-pic.svg" alt="Путеводитель" class="titletrip-svg">
 
-    </main>
+    <section class="trip-row">
+      <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/trippart2.png" alt="Обложка путеводителя" class="covertrip-png">
+      <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/verstka.png" alt="Разворот путеводителя" class="tripbook-png">
+    </section>
 
-</body> 
+    <section class="trip-cards">
+      <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/tripcards.png" alt="Карточки путеводителя" class="bookcards-png">
+    </section>
+  </main>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Список всех страниц в том порядке, в котором они идут в твоем меню
+    const projectOrder = [
+        'posters.html',      // плакаты
+        'nomad-voice.html',  // голос кочевников
+        'chtetsky.html',     // чтецкий вечер
+        'intensive.html',    // интенсив вшм+втб
+        'smmvtb.html',       // для втб (коммуникации)
+        'sputnik.html',      // спутник
+        'sned.html',         // снедь
+        'tripguide.html',    // путеводитель
+        '3d.html',           // пак для втб (3D)
+       
+        'motion.html',       // моушн
+        'photo.html'         // фото
+    ];
+
+    // Получаем имя текущего файла (например, 'sned.html')
+    const currentPath = window.location.pathname.split("/").pop();
+    
+    // Находим индекс текущей страницы в массиве
+    const currentIndex = projectOrder.indexOf(currentPath);
+    const nextButton = document.querySelector('.js-next-project');
+
+    if (nextButton && currentIndex !== -1) {
+        // Если это не последний проект в списке
+        if (currentIndex < projectOrder.length - 1) {
+            nextButton.href = projectOrder[currentIndex + 1];
+        } else {
+            // Если проект последний (фото), кнопка ведет на главную
+            nextButton.href = 'index.html';
+            nextButton.textContent = 'на главную'; 
+        }
+    }
+});
+</script>
+</body>
+</html>
       

@@ -1,45 +1,37 @@
-const links = document.querySelectorAll('.project-link');
-const container = document.getElementById('hover-img-container');
+document.addEventListener('DOMContentLoaded', () => {
+  const projectLinks = document.querySelectorAll('.project-link, .subproject-link');
 
-links.forEach(link => {
+  projectLinks.forEach(link => {
     link.addEventListener('mouseenter', () => {
-        const imgUrl = link.getAttribute('data-img');
-        container.style.backgroundImage = `url(${imgUrl})`;
-        container.classList.add('active');
-    });
-
-    link.addEventListener('mouseleave', () => {
-        container.classList.remove('active');
-    });
-    const links = document.querySelectorAll('.project-link');
-const previews = document.querySelectorAll('.preview-img');
-
-links.forEach(link => {
-    link.addEventListener('mouseenter', () => {
-        const id = link.getAttribute('data-image');
-        const targetImg = document.getElementById(id);
-        if (targetImg) targetImg.classList.add('active');
-    });
-
-    link.addEventListener('mouseleave', () => {
-        const id = link.getAttribute('data-image');
-        const targetImg = document.getElementById(id);
-        if (targetImg) targetImg.classList.remove('active');
-    });
-});
-});
-document.querySelectorAll('.project-link').forEach(link => {
-    const hoverImage = document.getElementById('hover-image');
-
-    link.addEventListener('mouseenter', () => {
-        const imageUrl = link.getAttribute('data-image');
-        if (imageUrl) {
-            hoverImage.src = imageUrl;
-            hoverImage.classList.add('active');
+      const imageId = link.getAttribute('data-image');
+      if (imageId) {
+        const targetImg = document.getElementById(imageId);
+        if (targetImg) {
+          // Сначала убираем active у всех, чтобы не было наслоений
+          document.querySelectorAll('.preview-img').forEach(img => img.classList.remove('active'));
+          // Добавляем active нужной
+          targetImg.classList.add('active');
         }
+      }
     });
 
     link.addEventListener('mouseleave', () => {
-        hoverImage.classList.remove('active');
+      document.querySelectorAll('.preview-img').forEach(img => img.classList.remove('active'));
     });
+  });
+
+  // Логика аккордеона (твоя без изменений, просто почищенная)
+  document.querySelectorAll('.project-toggle').forEach((button) => {
+    button.addEventListener('click', () => {
+      const item = button.closest('.project-item');
+      const isOpen = item.classList.contains('is-open');
+
+      document.querySelectorAll('.project-item.is-open').forEach((openItem) => {
+        if (openItem !== item) openItem.classList.remove('is-open');
+      });
+
+      item.classList.toggle('is-open');
+    });
+  });
 });
+

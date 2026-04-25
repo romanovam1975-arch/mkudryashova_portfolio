@@ -1,164 +1,266 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maria Kudryashova | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maria Kudryashova | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-    <header class="top-bar">
-        <div class="bio-en">Hello! I'm graphic designer and illustrator from Moscow.
-        Here you can learn my full portfolio</div>
-        <div class="bio-ru"> 
-            <span class="line-1"></span>Привет! Я графический и 3D дизайнер <br> из Москвы.</span>
-            <span class="line-2"></span>Здесь вы можете поглядеть <br> на мои любимые проекты</span>
-        </div>
-        <div class="contacts">
-            <a href="https://t.me/mkudryashova">tg: @mkudryashova</a>
-            <a href="mailto:romanovam1975@gmail.com">romanovam1975@gmail.com</a>
-        </div>
-    </header>
+  <header class="top-bar">
+    <div class="bio-en">
+      Hello! I'm a graphic designer and illustrator from Moscow.
+      Here you can learn my full portfolio
+    </div>
 
-   <main class="container">
-        <section class="projects">
-            <h1>Проекты/</h1>
-            <nav class="project-list">
-               <li>
-               <li><a href="posters.html" class="project-link" data-image="assets/hover-posters.jpg">плакаты</a></li>
-                <li><a href="intensive.html" class="project-link" data-image="assets/.jpg">интенсив ВШМ</a></li>
-                <a href="#" class="project-link">спутник</a>
-                <a href="#" class="project-link" data-image="vtb">для ВТБ</a>
-                <li><a href="chtetsky.html" class="project-link" data-image="assets/kollazsh2.png">чтецкий вечер</a></li>
-                <li><a href="tripguide.html" class="project-link" data-image="assets/trip-preview.png">путеводитель</a></li>
-                <li><a href="nomad-voice.html" class="project-link">голос кочевников</a></li>
-                <a href="#" class="project-link">снедь</a>
-                <a href="#" class="project-link">моушн</a>
-                <a href="#" class="project-link">фото</a>
-                
-            </nav>
-        </section>
-<main class="container">
+    <div class="bio-ru">
+      <div>Привет! Я графический и 3D дизайнер из Москвы.</div>
+      <div>Здесь вы можете посмотреть мои проекты</div>
+    </div>
 
-    <div class="project-previews">
-        <img id="assets/hover-posters.jpg" src="assets/hover-posters.jpg" class="preview2-img">
-        <img id="vtb" src="assets/for-vtb.webp" class="preview1-img">
+    <div class="contacts">
+      <a href="https://t.me/mkudryashova">tg: @mkudryashova</a>
+      <a href="mailto:romanovam1975@gmail.com">romanovam1975@gmail.com</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="container hero-section">
+      <section class="projects">
+  <h1>Проекты/</h1>
+  <nav aria-label="Список проектов">
+    <ul class="project-list">
+      <li><a href="posters.html" class="project-link" data-image="https://res.cloudinary.com/dn48h6rt6/image/upload/hover-posters.jpg">плакаты</a></li>
+
+      <li class="project-item has-children">
+        <button class="project-link project-toggle" type="button">брендинг</button>
+        <ul class="project-sublist">
+          <li><a href="nomad-voice.html" class="subproject-link" data-image="https://res.cloudinary.com/dn48h6rt6/image/upload/construction.webp">голос кочевников</a></li>
+          <li><a href="chtetsky.html" class="subproject-link" data-image="https://res.cloudinary.com/dn48h6rt6/image/upload/kollazsh2.png">чтецкий вечер</a></li>
+          <li><a href="intensive.html" class="subproject-link" data-image="https://res.cloudinary.com/dn48h6rt6/image/upload/vshm.webp">интенсив вшм+втб</a></li>
+        </ul>
+      </li>
+
+      <li class="project-item has-children">
+        <button class="project-link project-toggle" type="button">коммуникации</button>
+        <ul class="project-sublist">
+          <li><a href="smmvtb.html" class="subproject-link" data-image="https://res.cloudinary.com/dn48h6rt6/image/upload/for-vtb.webp">для втб</a></li>
+        </ul>
+      </li>
+
+      <li class="project-item has-children">
+        <button class="project-link project-toggle" type="button">упаковка</button>
+        <ul class="project-sublist">
+          <li><a href="sputnik.html" class="subproject-link" data-image="https://res.cloudinary.com/dn48h6rt6/image/upload/red.webp">спутник</a></li>
+        </ul>
+      </li>
+
+      <li class="project-item has-children">
+        <button class="project-link project-toggle" type="button">книги</button>
+        <ul class="project-sublist">
+          <li><a href="sned.html" class="subproject-link" data-image="https://res.cloudinary.com/dn48h6rt6/image/upload/cover.webp">снедь</a></li>
+          <li><a href="tripguide.html" class="subproject-link" data-image="https://res.cloudinary.com/dn48h6rt6/image/upload/trip-preview.png">путеводитель</a></li>
+        </ul>
+      </li>
+
+      <li class="project-item has-children">
+        <button class="project-link project-toggle" type="button">3D иллюстрации</button>
+        <ul class="project-sublist">
+          <li><a href="3d.html" class="subproject-link" data-image="https://res.cloudinary.com/dn48h6rt6/image/upload/3dprew.webp">пак для втб</a></li>
+        </ul>
+      </li>
+
+      <li><a href="motion.html" class="project-link" data-image="https://res.cloudinary.com/dn48h6rt6/image/upload/motion.jpg">моушн</a></li>
+      <li><a href="photo.html" class="project-link" data-image="https://res.cloudinary.com/dn48h6rt6/image/upload/photo.jpg">фото</a></li>
+    </ul>
+  </nav>
+</section>
+
+<div class="project-previews" aria-hidden="true">
+  <img id="https://res.cloudinary.com/dn48h6rt6/image/upload/hover-posters.jpg" src="https://res.cloudinary.com/dn48h6rt6/image/upload/hover-posters.jpg" alt="" class="preview-img preview-1">
+  <img id="https://res.cloudinary.com/dn48h6rt6/image/upload/construction.webp" src="https://res.cloudinary.com/dn48h6rt6/image/upload/construction.webp" alt="" class="preview-img preview-2">
+  <img id="https://res.cloudinary.com/dn48h6rt6/image/upload/kollazsh2.png" src="https://res.cloudinary.com/dn48h6rt6/image/upload/kollazsh2.png" alt="" class="preview-img preview-3">
+  <img id="https://res.cloudinary.com/dn48h6rt6/image/upload/vshm.webp" src="https://res.cloudinary.com/dn48h6rt6/image/upload/vshm.webp" alt="" class="preview-img preview-4">
+  <img id="https://res.cloudinary.com/dn48h6rt6/image/upload/for-vtb.webp" src="https://res.cloudinary.com/dn48h6rt6/image/upload/for-vtb.webp" alt="" class="preview-img preview-2">
+  <img id="https://res.cloudinary.com/dn48h6rt6/image/upload/red.webp" src="https://res.cloudinary.com/dn48h6rt6/image/upload/sputnik/red.webp" alt="" class="preview-img preview-3">
+  <img id="https://res.cloudinary.com/dn48h6rt6/image/upload/cover.webp" src="https://res.cloudinary.com/dn48h6rt6/image/upload/cover.webp" alt="" class="preview-img preview-4">
+  <img id="https://res.cloudinary.com/dn48h6rt6/image/upload/trip-preview.png" src="https://res.cloudinary.com/dn48h6rt6/image/upload/trip-preview.png" alt="" class="preview-img preview-1">
+  <img id="https://res.cloudinary.com/dn48h6rt6/image/upload/3dprew.webp" src="https://res.cloudinary.com/dn48h6rt6/image/upload/3dprew.webp" alt="" class="preview-img preview-1">
+</div>
+
+      <section class="hero-name">
+        <div class="name-block">
+          <span class="line-1">Мария Кудряшова</span>
+          <span class="line-2">Графический</span>
+          <span class="line-3">дизайнер/ <br> иллюстратор</span>
+          <span class="line-4">Maria&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kudryashova</span>
+          <span class="line-5">Graphic designer/</span>
+          <span class="line-6">
+            <span>&nbsp;&nbsp;illustrator</span>
+            <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/my-photo.webp" alt="Мария Кудряшова" class="profile-image-inline">
+          </span>
         </div>
-    
-    <div class="project-previews2">
-        <img id="assets/kollazsh2.png" src="assets/kollazsh2.png" class="preview3-img">
-        </div>
-    
-    <div class="project-previews3">
-        <img id="assets/trip-preview.png" src="assets/trip-preview.png" class="preview4-img">
-        </div>
-      
-
-
-
-    <section class="hero-name">
-        <div class="name-block"> </div>
+      </section>
     </section>
 
-</main>
+    <section class="container cv-section">
+      <div class="cv-link">
+        <a href="#cv-target">
+          CV
+          <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/arrow.svg" alt="arrow" class="inline-arrow">
+        </a>
+      </div>
+    </section>
 
-        <section class="hero-name">
-            <div class="name-block">
-                <span class="line-1">Мария Кудряшова</span>
-                <span class="line-2">Графический</span>
-                <span class="line-3">дизайнер/ <br> иллюстратор</span>
-                <span class="line-4">Maria&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kudryashova</span>
-                <span class="line-5">Graphic designer/</span>
-                <span class="line-6">&nbsp;&nbsp;illustrator 
-                    <img src="assets/my-photo.webp" class="profile-image-inline">
-                </span>
-            </div>
-        </section>
-    </main> 
-        <div class="container cv-section">
-    <div class="cv-link">
-    <a href="#cv-target">CV<img src="assets/arrow.svg" alt="arrow" class="inline-arrow"></a>
-</div>
-</div>
-        </section>
-    </main>
-    
+    <section class="container description-section">
+      <div id="cv-target"></div>
 
-<section class="container description-section"> <div id="cv-target"></div>
-    <div id="p5-container"></div>
-    <div class="description-text">
-        <p>Работаю с айдентикой, дизайном упаковки и&nbsp;полиграфии. Создаю фирменные стили с&nbsp;яркой типографикой.</p>
-    </div>
-</section>
+      <div class="p5-stage">
+        <div id="p5-container"></div>
+      </div>
 
-<section class="info-block" id="resume">
-    <div class="container info-item">
+      <div class="description-text">
+        <p>
+          Работаю с айдентикой, 3D дизайном и&nbsp;SMM контентом.
+          Создаю фирменные стили с&nbsp;яркой типографикой.
+        </p>
+      </div>
+    </section>
+
+    <section class="info-block" id="resume">
+      <div class="container info-item">
         <div class="info-label">
-    Специализации<img src="assets/arrow.svg" alt="arrow" class="inline-arrow">
-</div>
-        <div class="info-content">
-            Айдентика, дизайн и верстка презентаций, создание полиграфической продукции и мерча. Плакатная графика. 3D графика, моушн-дизайн, 3D анимация. Дизайн-исследование, сбор референсов, создание раскадровок для видео.
-        </div>
-    </div>
-
-    <div class="container info-item">
-        <div class="info-label">
-            Софт-скиллы<img src="assets/arrow.svg" alt="arrow" class="inline-arrow">
+          Специализации
+          <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/arrow.svg" alt="arrow" class="inline-arrow">
         </div>
         <div class="info-content">
-            Создаю метафоры, активно участвую в брейн-штормах, выездных мероприятиях. Презентую дизайн-концепции. Общаюсь с типографиями. Генерирую идеи, имею навыки арт-дирекшна.
+          Айдентика, дизайн и верстка презентаций, создание полиграфической продукции и мерча.
+          Плакатная графика. 3D графика, моушн-дизайн, 3D анимация. Дизайн-исследование, создание концепций.
+          Экспериментальные лендинги. Полиграфия. Вайбкодинг.
         </div>
-    </div>
+      </div>
 
-    <div class="container info-item">
+      <div class="container info-item">
         <div class="info-label">
-            Инструменты<img src="assets/arrow.svg" alt="arrow" class="inline-arrow">
+          Софт-скиллы
+          <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/arrow.svg" alt="arrow" class="inline-arrow">
         </div>
         <div class="info-content">
-            InDesign, Photoshop, Figma, Illustrator, Keynote, Google Slides, Miro, Midjourney, Recraft, Deepseek, ChatGPT, Procreate. <br><br> After Effects, Cinema 4D + RedShift, Houdini, Zbrush, Unreal engine.
+          Создаю метафоры, активно участвую в брейн-штормах.
+          Презентую дизайн-концепции. Генерирую идеи, имею навыки арт-дирекшна. Внимательно слушаю,
+          вежливо <br> общаюсь, проявляю эмпатию к клиенту и проектам!
         </div>
-    </div>
+      </div>
 
-    <div class="container info-item">
+      <div class="container info-item">
         <div class="info-label">
-            Опыт работы<img src="assets/arrow.svg" alt="arrow" class="inline-arrow">
+          Инструменты
+          <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/arrow.svg" alt="arrow" class="inline-arrow">
         </div>
+        <div class="info-content">
+          Figma, Illustrator, Cinema 4D + RedShift, Keynote, InDesign, Photoshop, After Effects, Google Slides, Mirro, Midjourney, Readymag
+          HTML, CSS, Recraft, Deepseek, ChatGPT, Gemini, krea AI, Nano banana. <br><br>
+          Houdini, Zbrush, Unreal engine.
+        </div>
+      </div>
+
+      <div class="container info-item">
+        <div class="info-label">
+          Опыт работы
+          <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/arrow.svg" alt="arrow" class="inline-arrow">
+        </div>
+         
         <div class="info-years">
-            2025/ <br> 2026
+          2023 <br>
+          <br>
+          2025/ <br> 2026
         </div>
         <div class="info-content">
-            <strong>Стажировка в orator.club</strong><br>
-            Полиграфия, плакаты, сторис и&nbsp;анимации для&nbsp;соцсетей. Айдентика для мероприятий.<br><br>
-            <strong>Графический и 3D дизайнер в ВТБ (с января)</strong><br>
-            Дизайн и верстка презентаций, сторис и&nbsp;баннеры для&nbsp;приложения ВТБ. Айдентика для образовательных проектов. 3D графика для каждой задачи. Айдентика для мероприятий, дизайн внутренних коммуникаций. Взаимодействие 
-с типографиями и редакторами разных направлений в банке. 3Д анимация. 
-        </div>
-    </div>
-</section>
-<div class="container info-item">
-    <div class="info-label">Образование<img src="assets/arrow.svg" alt="arrow" class="inline-arrow">
-    </div>
-    <div class="info-years">2019/ <br> 2023</div>
-    <div class="info-content">Строгановская академия 
-коммуникативный дизайн, 
-бакалавр</div>
-</div>
+          <strong>Стажировка в orator.club</strong><br>
+          Полиграфия, плакаты, сторис и&nbsp;анимации для&nbsp;соцсетей.
+          Айдентика для мероприятий.<br><br>
+          <br><br><br>
 
-<div class="container info-item no-border">
-    <div class="info-label"></div> 
-    <div class="info-years">2023/ <br> 2025</div>
-    <div class="info-content">Курс Motion Design Pro 23/25
-Bang Bang Education</div>
-</div>
-    </div>
-<footer class="container footer">
+
+          <strong>Графический и 3D дизайнер в ВТБ (с января)</strong><br>
+          Дизайн и верстка презентаций, сторис и&nbsp;баннеры для&nbsp;приложения ВТБ.
+          Айдентика для образовательных проектов. 3D графика для каждой задачи.
+          Айдентика для мероприятий, дизайн внутренних коммуникаций.
+          Взаимодействие с типографиями и редакторами разных направлений в банке.
+          3D анимация.
+        </div>
+      </div>
+
+      <div class="container info-item">
+        <div class="info-label">
+          Образование
+          <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/arrow.svg" alt="arrow" class="inline-arrow">
+        </div>
+        <div class="info-years">2019/ <br> 2023</div>
+        <div class="info-content">
+          Строгановская академия<br>
+          коммуникативный дизайн,<br>
+          бакалавр
+        </div>
+      </div>
+
+      <div class="container info-item no-border">
+        <div class="info-label"></div>
+        <div class="info-years">2023/ <br> 2025</div>
+        <div class="info-content">
+          Курс Motion Design Pro 23/25<br>
+          Bang Bang Education
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container footer">
     <div class="footer-label">Связаться со мной:</div>
     <div class="footer-email">romanovam1975@gmail.com</div>
     <div class="footer-tg">tg: @mkudryashova</div>
-</footer>
-<script src="script.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-<script src="sketch.js"></script>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <script src="sketch.js"></script>
+  <script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Список всех страниц в том порядке, в котором они идут в твоем меню
+    const projectOrder = [
+        'posters.html',      // плакаты
+        'nomad-voice.html',  // голос кочевников
+        'chtetsky.html',     // чтецкий вечер
+        'intensive.html',    // интенсив вшм+втб
+        'smmvtb.html',       // для втб (коммуникации)
+        'sputnik.html',      // спутник
+        'sned.html',         // снедь
+        'tripguide.html',    // путеводитель
+        '3d.html',           // пак для втб (3D)
+       
+        'motion.html',       // моушн
+        'photo.html'         // фото
+    ];
+
+    // Получаем имя текущего файла (например, 'sned.html')
+    const currentPath = window.location.pathname.split("/").pop();
+    
+    // Находим индекс текущей страницы в массиве
+    const currentIndex = projectOrder.indexOf(currentPath);
+    const nextButton = document.querySelector('.js-next-project');
+
+    if (nextButton && currentIndex !== -1) {
+        // Если это не последний проект в списке
+        if (currentIndex < projectOrder.length - 1) {
+            nextButton.href = projectOrder[currentIndex + 1];
+        } else {
+            // Если проект последний (фото), кнопка ведет на главную
+            nextButton.href = 'index.html';
+            nextButton.textContent = 'на главную'; 
+        }
+    }
+});
+</script>
 </body>
 </html>

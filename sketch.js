@@ -1,88 +1,81 @@
 let textToShow = "hello beautiful welcome and be nice hello beautiful welcome and be nice  ";
-let fontSize = 20; 
-let radius = 180;  
+let fontSize = 10;
+let radius = 90;
 let angleOffset = 0;
-let rotationSpeed = 0.001; 
+let rotationSpeed = 0.001;
 let dragging = false;
+let isHoveringCanvas = false;
 let myFont;
+let canvas;
 
 function preload() {
-  // Убедись, что путь и расширение файла верны (.otf или .woff2)
-  myFont = loadFont('assets/fonts/OmegaUI-Regular.otf');
+  myFont = loadFont('https://res.cloudinary.com/dn48h6rt6/image/upload/fonts/OmegaUI-Regular.otf');
 }
 
 function setup() {
-  // Создаем холст и привязываем его к контейнеру в HTML
-  let canvas = createCanvas(600, 350, WEBGL); 
+  canvas = createCanvas(300, 175, WEBGL);
   canvas.parent('p5-container');
-  
+
+  canvas.mouseOver(() => {
+    isHoveringCanvas = true;
+  });
+
+  canvas.mouseOut(() => {
+    isHoveringCanvas = false;
+    dragging = false;
+  });
+
   textFont(myFont);
   textSize(fontSize);
   textAlign(CENTER, CENTER);
-
-  // Включаем сглаживание для WEBGL
   setAttributes('antialias', true);
 }
 
 function draw() {
-  background(255); // Белый фон
-  
-  // 1. ЛОГИКА ВРАЩЕНИЯ И ИНТЕРАКТИВА
-  let targetSpeed = 0.004; // Базовая скорость
-  
-  // Проверяем наведение мыши (в WEBGL центр — это 0,0)
-  if (abs(mouseX - width/2) < width/2 && abs(mouseY - height/2) < height/2) {
-    if (!dragging) targetSpeed = 0.04; // Ускоряемся при наведении
+  background(255);
+
+  let targetSpeed = 0.004;
+
+  if (isHoveringCanvas && !dragging) {
+    targetSpeed = 0.04;
   }
 
   if (dragging) {
     let diff = mouseX - pmouseX;
     angleOffset += diff * 0.01;
-    rotationSpeed = diff * 0.01; 
+    rotationSpeed = diff * 0.01;
   } else {
-    rotationSpeed = lerp(rotationSpeed, targetSpeed, 0.05); 
+    rotationSpeed = lerp(rotationSpeed, targetSpeed, 0.05);
     angleOffset += rotationSpeed;
   }
 
-  // 2. ПАРАМЕТРЫ ВОЛНЫ
-  let waveAmplitude = 25; // Высота прыжка букв
-  let waveSpeed = frameCount * 0.05; // Скорость бега волны по буквам
+  let waveAmplitude = 15;
+  let waveSpeed = frameCount * 0.05;
 
-  // 3. ОТРИСОВКА ЦИЛИНДРА
   for (let i = 0; i < textToShow.length; i++) {
-    // Угол каждой буквы
     let charAngle = angleOffset + (i / textToShow.length) * TWO_PI;
 
-    // Позиция на окружности (X и Z)
     let x = sin(charAngle) * radius;
     let z = cos(charAngle) * radius;
-    
-    // Динамическая волна (Y)
-    let y = sin(charAngle * 2 + waveSpeed) * waveAmplitude; 
+    let y = sin(charAngle * 2 + waveSpeed) * waveAmplitude;
 
-    // Эффекты глубины
-    let alpha = map(z, -radius, radius, 20, 255); // Прозрачность
-    let scaleFactor = map(z, -radius, radius, 0.6, 1.3); // Масштаб
+    let alpha = map(z, -radius, radius, 20, 255);
+    let scaleFactor = map(z, -radius, radius, 0.6, 1.3);
 
     push();
-    translate(x, y, z); 
-    
-    // БИЛБОРДИНГ: Заставляем буквы всегда смотреть в экран
-    // Сбрасываем поворот по Y, который создается движением по кругу
-    rotateY(-charAngle + charAngle); 
-    
+    translate(x, y, z);
+
     scale(scaleFactor);
-    fill(0, alpha); // Черный текст с прозрачностью
+    fill(0, alpha);
     noStroke();
-    
+
     text(textToShow[i], 0, 0);
     pop();
   }
 }
 
-// 4. ОБРАБОТКА МЫШИ ДЛЯ ВРАЩЕНИЯ
 function mousePressed() {
-  if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height) {
+  if (isHoveringCanvas) {
     dragging = true;
   }
 }

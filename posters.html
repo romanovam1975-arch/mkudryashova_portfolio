@@ -6,75 +6,92 @@
     <title>Posters — Кейс</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="project-page">
+<body class="project-page posters-page">
 
     <nav class="fixed-nav">
         <div class="nav-content">
             <a href="index.html" class="nav-link">на главную</a>
             <span class="nav-title">проект: плакаты</span>
             <hr class="nav-line">
-            <a href="#" class="nav-link">дальше</a>
+            <a href="#" class="nav-link js-next-project">дальше</a>
         </div>
     </nav>
 
-    <main class="project-main">
-        <img src="assets/Плакаты.svg" alt="title2-svg" class="title2-svg">
-        
-        <div class="posters-container">
-            <img src="assets/poster1-3.png" alt="posters-123" class="posters123-img">
-            <div class="posters-caption">
-                Серия&nbsp;плакатов&nbsp;для&nbsp;выставки <br> кинетического искусства
-            </div>
-        </div>
+    <main class="project-main posters-main">
+        <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/Плакаты.svg" alt="Плакаты" class="posters-title">
 
-        <div class="posters-container">
-            <img src="assets/posters4-7.png" alt="posters-47" class="posters123-img">
-             <div class="posters-caption2">
-                Серия&nbsp;плакатов&nbsp;для&nbsp;выставки <br> кинетического искусства
-            </div>
-        </div>
+        <section class="poster-item poster-item--wide">
+            <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/poster1-3.png" alt="Серия плакатов 1–3" class="poster-image">
+            <p class="poster-caption">Серия&nbsp;плакатов&nbsp;для&nbsp;выставки<br>кинетического искусства</p>
+        </section>
 
-         <div class="posters-container">
-            <img src="assets/golos.png" alt="goloskochev" class="goloskochev-img">
-             <div class="posters-caption3">
-                Серия&nbsp;плакатов&nbsp;для&nbsp;музыкального <br> фестиваля голос кочевников
-            </div>
-        </div> 
-        <div class="posters-container">
-            <img src="assets/pinkfloyd.png" alt="pink" class="pink-img">
-             <div class="posters-caption4">
-                Серия&nbsp;плакатов&nbsp;для&nbsp;анонса <br> концера группы Pink Floyd
-            </div>
-        </div> 
+        <section class="poster-item poster-item--wide">
+            <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/posters4-7.png" alt="Серия плакатов 4–7" class="poster-image">
+            <p class="poster-caption">Серия&nbsp;плакатов&nbsp;для&nbsp;выставки<br>кинетического искусства</p>
+        </section>
 
-         <div class="posters-container">
-            <img src="assets/reklama.png" alt="adv" class="reklama-img">
-             <div class="posters-caption5">
-                Серия&nbsp;рекламных плакатов&nbsp;для&nbsp;бренда <br> контактных линз acuvue
-            </div>
-        </div> 
-          
-        <div class="posters-container">
-            <img src="assets/vector.png" alt="3different" class="vector-img">
-             <div class="posters-caption6">
-                Событийный плакат к выставке <br> «Модернизм и интернациональный стиль»
-            </div>
+        <section class="poster-item poster-item--golos">
+            <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/golos.webp" alt="Плакаты для фестиваля Голос кочевников" class="poster-image">
+            <p class="poster-caption">Серия&nbsp;плакатов&nbsp;для&nbsp;музыкального<br>фестиваля голос кочевников</p>
+        </section>
 
-             <div class="posters-caption7">
-                Событийный плакат к выставке <br> современного искусства «ТРЭШ АРТ»
+        <section class="poster-item poster-item--pink">
+            <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/pinkfloyd.png" alt="Плакат Pink Floyd" class="poster-image">
+            <p class="poster-caption">Серия&nbsp;плакатов&nbsp;для&nbsp;анонса<br>концерта группы Pink Floyd</p>
+        </section>
+
+        <section class="poster-item poster-item--ads">
+            <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/reklama.webp" alt="Рекламные плакаты Acuvue" class="poster-image">
+            <p class="poster-caption">Серия&nbsp;рекламных плакатов&nbsp;для&nbsp;бренда<br>контактных линз Acuvue</p>
+        </section>
+
+        <section class="poster-item poster-item--vector">
+            <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/vector.png" alt="Серия событийных плакатов" class="poster-image">
+            <div class="poster-caption-list">
+                <p class="poster-caption">Событийный плакат к выставке<br>«Модернизм и интернациональный стиль»</p>
+                <p class="poster-caption">Событийный плакат к выставке<br>современного искусства «ТРЭШ АРТ»</p>
+                <p class="poster-caption">Событийный плакат к научной<br>математической лекции «ВЕКТОР»</p>
             </div>
-            
-            <div class="posters-caption8">
-                Событийный плакат к научной <br> математической лекции «ВЕКТОР»
-            </div>
-
-        </div> 
-
-
+        </section>
     </main>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Список всех страниц в том порядке, в котором они идут в твоем меню
+    const projectOrder = [
+        'posters.html',      // плакаты
+        'nomad-voice.html',  // голос кочевников
+        'chtetsky.html',     // чтецкий вечер
+        'intensive.html',    // интенсив вшм+втб
+        'smmvtb.html',       // для втб (коммуникации)
+        'sputnik.html',      // спутник
+        'sned.html',         // снедь
+        'tripguide.html',    // путеводитель
+        '3d.html',           // пак для втб (3D)
+       
+        'motion.html',       // моушн
+        'photo.html'         // фото
+    ];
 
-</body> 
+    // Получаем имя текущего файла (например, 'sned.html')
+    const currentPath = window.location.pathname.split("/").pop();
+    
+    // Находим индекс текущей страницы в массиве
+    const currentIndex = projectOrder.indexOf(currentPath);
+    const nextButton = document.querySelector('.js-next-project');
 
-  
+    if (nextButton && currentIndex !== -1) {
+        // Если это не последний проект в списке
+        if (currentIndex < projectOrder.length - 1) {
+            nextButton.href = projectOrder[currentIndex + 1];
+        } else {
+            // Если проект последний (фото), кнопка ведет на главную
+            nextButton.href = 'index.html';
+            nextButton.textContent = 'на главную'; 
+        }
+    }
+});
+</script>
+</body>
+</html>
 
  

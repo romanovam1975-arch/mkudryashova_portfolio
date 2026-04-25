@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Спутник — Кейс</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="project-page sputnik-page">
+
+    <nav class="fixed-nav">
+        <div class="nav-content">
+            <a href="index.html" class="nav-link">на главную</a>
+            <span class="nav-title">проект: спутник</span>
+            <hr class="nav-line">
+            <a href="#" class="nav-link js-next-project">дальше</a>
+        </div>
+    </nav>
+
+    <main class="project-main sputnik-main">
+        <section class="sputnik-hero">
+            <div class="sputnik-text-block">
+                <h1 class="sputnik-title">Упаковка шоколадной<br>продукции «СПУТНИК»</h1>
+                <p class="sputnik-lead">
+                    Шоколад может быть темным или белым,<br>
+                    точно так же, как небесные тела,<br>
+                    освещенные и&nbsp;не&nbsp;освещенные светилами.<br>
+                    Метеориты, спутники и&nbsp;планеты отдаленно<br>
+                    напоминают конфеты самых разных форм.
+                </p>
+                <p class="sputnik-text">
+                    Они могут блуждать в&nbsp;темном пространстве<br>
+                    по&nbsp;одиночке, попадаясь в&nbsp;руки в&nbsp;виде одной<br>
+                    плитки или батончика, а&nbsp;могут составлять<br>
+                    кольца-спутники, являясь в&nbsp;виде целого<br>
+                    набора сладостей.
+                </p>
+            </div>
+
+            <video class="sputnik-video" autoplay muted loop playsinline>
+                <source src="https://res.cloudinary.com/dn48h6rt6/image/upload/sputnik/спутник.mp4" type="video/mp4">
+            </video>
+        </section>
+
+        <section class="sputnik-gallery">
+            <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/sputnik/choke.webp" alt="Упаковка спутник — шоколадные плитки" class="sputnik-media full-bleed">
+            <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/sputnik/banki.webp" alt="Упаковка спутник — паста в банках" class="sputnik-media full-bleed">
+            <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/sputnik/red.webp" alt="Упаковка спутник — конфеты на красном фоне" class="sputnik-media full-bleed">
+            <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/sputnik/pack.webp" alt="Развертки упаковки спутник" class="sputnik-media">
+        </section>
+    </main>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Список всех страниц в том порядке, в котором они идут в твоем меню
+    const projectOrder = [
+        'posters.html',      // плакаты
+        'nomad-voice.html',  // голос кочевников
+        'chtetsky.html',     // чтецкий вечер
+        'intensive.html',    // интенсив вшм+втб
+        'smmvtb.html',       // для втб (коммуникации)
+        'sputnik.html',      // спутник
+        'sned.html',         // снедь
+        'tripguide.html',    // путеводитель
+        '3d.html',           // пак для втб (3D)
+        'motion.html',       // моушн
+        'photo.html'         // фото
+    ];
+
+    // Получаем имя текущего файла (например, 'sned.html')
+    const currentPath = window.location.pathname.split("/").pop();
+    
+    // Находим индекс текущей страницы в массиве
+    const currentIndex = projectOrder.indexOf(currentPath);
+    const nextButton = document.querySelector('.js-next-project');
+
+    if (nextButton && currentIndex !== -1) {
+        // Если это не последний проект в списке
+        if (currentIndex < projectOrder.length - 1) {
+            nextButton.href = projectOrder[currentIndex + 1];
+        } else {
+            // Если проект последний (фото), кнопка ведет на главную
+            nextButton.href = 'index.html';
+            nextButton.textContent = 'на главную'; 
+        }
+    }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3D графика — Кейс</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="project-page">
+
+  <nav class="fixed-nav">
+    <div class="nav-content">
+      <a href="index.html" class="nav-link">на главную</a>
+      <span class="nav-title">проект: 3D графика</span>
+      <hr class="nav-line" />
+      <a href="#" class="nav-link js-next-project">дальше</a>
+    </div>
+  </nav>
+
+  <main class="project-main-3d">
+    <section class="intro-3d">
+      <div class="intro-3d-text">
+        <h1 class="intro-3d-title">
+          3D графика для внешних <br>
+          и внутренних коммуникаций
+        </h1>
+
+        <p class="intro-3d-description">
+          Абстрактные 3д элементы для презентаций,
+          карточек в соцсети, дайджестов, сторис, обложек
+          для новостей в дзен, vc, и внутреннего портала
+          ВТБ Онлайн
+        </p>
+      </div>
+
+      <div class="intro-3d-image">
+        <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/3d-elements.webp" alt="3D графика для коммуникаций" />
+      </div>
+    </section>
+
+
+  <section class="objects-3d-gallery">
+      <div class="objects-3d-item set1">
+        <img class="objects-3d-img" src="https://res.cloudinary.com/dn48h6rt6/image/upload/set1.webp" alt="" />
+      </div>
+
+      <div class="objects-3d-item set2">
+        <img class="objects-3d-img" src="https://res.cloudinary.com/dn48h6rt6/image/upload/set2.webp" alt="" />
+      </div>
+
+      <div class="objects-3d-item set3">
+        <img class="objects-3d-img" src="https://res.cloudinary.com/dn48h6rt6/image/upload/set3.webp" alt="" />
+      </div>
+
+      <div class="objects-3d-item group3d full-bleed-item">
+        <img class="objects-3d-img" src="https://res.cloudinary.com/dn48h6rt6/image/upload/group3d.webp" alt="" />
+      </div>
+
+      <div class="objects-3d-item glasset">
+        <img class="objects-3d-img" src="https://res.cloudinary.com/dn48h6rt6/image/upload/glasset.webp" alt="" />
+      </div>
+
+      <div class="objects-3d-item set4">
+        <img class="objects-3d-img" src="https://res.cloudinary.com/dn48h6rt6/image/upload/set4.webp" alt="" />
+      </div>
+
+      <div class="objects-3d-item finalset full-bleed-item">
+        <img class="objects-3d-img" src="https://res.cloudinary.com/dn48h6rt6/image/upload/finalset.webp" alt="" />
+      </div>
+
+      <div class="objects-3d-demo">
+        <img class="objects-3d-demo" src="https://res.cloudinary.com/dn48h6rt6/image/upload/demo3d.webp" alt="" />
+      </div>
+
+    </section>
+  </main>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Список всех страниц в том порядке, в котором они идут в твоем меню
+    const projectOrder = [
+        'posters.html',      // плакаты
+        'nomad-voice.html',  // голос кочевников
+        'chtetsky.html',     // чтецкий вечер
+        'intensive.html',    // интенсив вшм+втб
+        'smmvtb.html',       // для втб (коммуникации)
+        'sputnik.html',      // спутник
+        'sned.html',         // снедь
+        'tripguide.html',    // путеводитель
+        '3d.html',           // пак для втб (3D)
+        'motion.html',       // моушн
+        'photo.html'         // фото
+    ];
+
+    // Получаем имя текущего файла (например, 'sned.html')
+    const currentPath = window.location.pathname.split("/").pop();
+    
+    // Находим индекс текущей страницы в массиве
+    const currentIndex = projectOrder.indexOf(currentPath);
+    const nextButton = document.querySelector('.js-next-project');
+
+    if (nextButton && currentIndex !== -1) {
+        // Если это не последний проект в списке
+        if (currentIndex < projectOrder.length - 1) {
+            nextButton.href = projectOrder[currentIndex + 1];
+        } else {
+            // Если проект последний (фото), кнопка ведет на главную
+            nextButton.href = 'index.html';
+            nextButton.textContent = 'на главную'; 
+        }
+    }
+});
+</script>
+</body>
+</html>

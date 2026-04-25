@@ -1,45 +1,75 @@
 <!DOCTYPE html>
 <html lang="ru">
+    
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Чтетский вечер — Кейс</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Чтецкий вечер — Кейс</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="project-page">
 
+<body class="project-page">
     <nav class="fixed-nav">
         <div class="nav-content">
             <a href="index.html" class="nav-link">на главную</a>
-            <span class="nav-title">проект: чтецкий вечер</span>
+            <span class="nav-title">проект: голос кочевников</span>
             <hr class="nav-line">
-            <a href="#" class="nav-link">дальше</a>
+            <a href="#" class="nav-link js-next-project">дальше</a>
         </div>
     </nav>
- <main class="project-main">
-   </section>
-        <img src="assets/texthead.svg" alt="title-svg" class="title-svg">
-        
-        <div class="flowers-wrapper">
-            <img src="assets/flowers.png" alt="flowers-sec" class="flowers-img">
-        </div>
+
+  <main class="project-main chtec-page">
+
+    <section class="chtec-canvas">
+      <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/texthead.svg" class="layer texthead" alt="">
+      <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/card2.png" class="layer card2" alt="">
+      <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/kollazsh.png" class="layer kollazsh" alt="">
+      <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/flowers.webp" class="layer flowers" alt="">
+      <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/vasylyok.png" class="layer vasylyok vasylyok-top-left" alt="">
+      <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/vasylyok.png" class="layer vasylyok vasylyok-center" alt="">
+      <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/kolosok.png" class="layer kolosok-left" alt="">
+      <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/kolosok.png" class="layer kolosok-center" alt="">
+      <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/part2.png" class="layer part2" alt="">
+      <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/kollazsh.png" class="layer kollazsh" alt="">
     </section>
-    <section>
-        <div><img src="assets/vasylyok.png" alt="flowers-v" class="vasylyok-img"></div>
-    </section>
+
+  </main>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Список всех страниц в том порядке, в котором они идут в твоем меню
+    const projectOrder = [
+        'posters.html',      // плакаты
+        'nomad-voice.html',  // голос кочевников
+        'chtetsky.html',     // чтецкий вечер
+        'intensive.html',    // интенсив вшм+втб
+        'smmvtb.html',       // для втб (коммуникации)
+        'sputnik.html',      // спутник
+        'sned.html',         // снедь
+        'tripguide.html',    // путеводитель
+        '3d.html',           // пак для втб (3D)
+       
+        'motion.html',       // моушн
+        'photo.html'         // фото
+    ];
+
+    // Получаем имя текущего файла (например, 'sned.html')
+    const currentPath = window.location.pathname.split("/").pop();
     
-        <section>
-        <div><img src="assets/card2.png" alt="postcard" class="card-img"></div>
-        </section>
+    // Находим индекс текущей страницы в массиве
+    const currentIndex = projectOrder.indexOf(currentPath);
+    const nextButton = document.querySelector('.js-next-project');
 
-         <section>
-        <div><img src="assets/part2.png" alt="partsec" class="part2-img"></div>
-        </section>
-        <section>
-        <div><img src="assets/kolosok.png" alt="trava" class="trava-img"></div>
-        </section>
-
-        <section>
-        <div><img src="assets/kollazsh.png" alt="koll" class="koll-img"></div>
-        </section>
-</main>
+    if (nextButton && currentIndex !== -1) {
+        // Если это не последний проект в списке
+        if (currentIndex < projectOrder.length - 1) {
+            nextButton.href = projectOrder[currentIndex + 1];
+        } else {
+            // Если проект последний (фото), кнопка ведет на главную
+            nextButton.href = 'index.html';
+            nextButton.textContent = 'на главную'; 
+        }
+    }
+});
+</script>
+</body>
+</html>
