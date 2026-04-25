@@ -9,7 +9,7 @@ let myFont;
 let canvas;
 
 function preload() {
-  myFont = loadFont('https://res.cloudinary.com/dn48h6rt6/image/upload/fonts/OmegaUI-Regular.otf');
+  myFont = loadFont('assets/fonts/OmegaUI-Regular.otf');
 }
 
 function setup() {
