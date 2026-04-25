@@ -1,18 +1,166 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Posters — Кейс</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Интенсив ВШМ — Кейс</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body class="project-page">
 
-    <nav class="fixed-nav">
-        <div class="nav-content">
-            <a href="index.html" class="nav-link">на главную</a>
-            <span class="nav-title">проект: интенсив ВШМ</span>
-            <hr class="nav-line">
-            <a href="#" class="nav-link">дальше</a>
-        </div>
-    </nav>
+  <nav class="fixed-nav">
+    <div class="nav-content">
+      <a href="index.html" class="nav-link">на главную</a>
+      <span class="nav-title">проект: интенсив ВШМ</span>
+      <hr class="nav-line">
+      <a href="#" class="nav-link js-next-project">дальше</a>
+    </div>
+  </nav>
+
+  <main class="project-main-intensive">
+    <h1 class="case-header-title-intensive">
+      Айдентика для образовательного <br>
+      интенсива ВШМ совместно с ВТБ
+    </h1>
+
+    <div class="intensive-video-frame" aria-label="Видео фрейм интенсива">
+      <video
+        class="intensive-video"
+        src="https://res.cloudinary.com/dn48h6rt6/image/upload/video/logo vshm.mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+        controls
+      >
+      </video>
+    </div>
+
+    <section class="container-info-intensive">
+      <div class="info-label-intensive">
+        Фирменный стиль создавался с расчетом <br>
+        на соответствие бренд-буку банка, запросам <br>
+        молодежи на яркий качественный мерч <br>
+        и общей финтех-направленностью тем лекций.
+      </div>
+
+      <div class="info-label-intensive second-info-intensive">
+        Целевая аудитория интенсива — студенты <br>
+        1–2 курсов ВШМ. Победителям предоставляется <br>
+        стажировка в ВТБ Онлайн.
+      </div>
+    </section>
+
+    <div class="identity-img">
+      <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/vshm.webp" alt="Айдентика интенсива ВШМ">
+    </div>
+
+    <div class="identity2-img">
+      <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/vshm2.webp" alt="Айдентика2 интенсива ВШМ">
+    </div>
+
+    <section class="intensive-showcase">
+  <div class="intensive-keyvisual">
+    <div class="intensive-keyvisual-text">
+      <div class="intensive-keyvisual-label">key visual</div>
+      <div class="intensive-keyvisual-subtext">
+        Анимация <br>
+        Появление типографики, эффект глубины, левитации <br>
+        элементов и их мягкого столкновения друг с другом. <br>
+        Обновление композиции и опций анимации.
+      </div>
+    </div>
+
+    <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/keyvisual.webp" alt="key visual ВШМ">
+  </div>
+
+  <div class="intensive-presentation-title">
+    как выглядит <br> в презентациях
+  </div>
+
+  <div class="intensive-presentation">
+    <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/presentation.webp" alt="презентации ВШМ">
+  </div>
+</section>
+
+<section class="intensive-smm" aria-label="SMM блок">
+  <h2 class="intensive-smm-title">smm</h2>
+
+  <div class="intensive-smm-inner">
+    <div class="intensive-smm-layout">
+
+      <div class="intensive-smm-social">
+        <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/smm2.webp" alt="" class="intensive-smm-social-item">
+        <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/smm1.webp" alt="" class="intensive-smm-social-item">
+      </div>
+
+      <div class="intensive-smm-videos">
+        <video class="intensive-smm-video small" src="https://res.cloudinary.com/dn48h6rt6/image/upload/video/logo vshm.mp4" autoplay muted loop playsinline></video>
+        <video class="intensive-smm-video small" src="https://res.cloudinary.com/dn48h6rt6/image/upload/video/1324.mp4" autoplay muted loop playsinline></video>
+        <video class="intensive-smm-video wide" src="https://res.cloudinary.com/dn48h6rt6/image/upload/video/logowide.mp4" autoplay muted loop playsinline></video>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<div class="merchvshm-title">
+    мерч
+  </div>
+
+<section class="intensive-more">
+  
+  <div class="more-item hoodies">
+    <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/hoodies.webp" alt="">
+  </div>
+
+  <div class="more-item part1">
+    <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/part1.webp" alt="">
+  </div>
+
+  <div class="more-item part2">
+    <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/part2.webp" alt="">
+  </div>
+
+</section>
+  </main>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Список всех страниц в том порядке, в котором они идут в твоем меню
+    const projectOrder = [
+        'posters.html',      // плакаты
+        'nomad-voice.html',  // голос кочевников
+        'chtetsky.html',     // чтецкий вечер
+        'intensive.html',    // интенсив вшм+втб
+        'smmvtb.html',       // для втб (коммуникации)
+        'sputnik.html',      // спутник
+        'sned.html',         // снедь
+        'tripguide.html',    // путеводитель
+        '3d.html',           // пак для втб (3D)
+        
+        'motion.html',       // моушн
+        'photo.html'         // фото
+    ];
+
+    // Получаем имя текущего файла (например, 'sned.html')
+    const currentPath = window.location.pathname.split("/").pop();
+    
+    // Находим индекс текущей страницы в массиве
+    const currentIndex = projectOrder.indexOf(currentPath);
+    const nextButton = document.querySelector('.js-next-project');
+
+    if (nextButton && currentIndex !== -1) {
+        // Если это не последний проект в списке
+        if (currentIndex < projectOrder.length - 1) {
+            nextButton.href = projectOrder[currentIndex + 1];
+        } else {
+            // Если проект последний (фото), кнопка ведет на главную
+            nextButton.href = 'index.html';
+            nextButton.textContent = 'на главную'; 
+        }
+    }
+});
+</script>
+</body>
+</html>

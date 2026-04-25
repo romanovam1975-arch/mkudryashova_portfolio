@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>снедь — Кейс</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="project-page">
+
+  <nav class="fixed-nav">
+    <div class="nav-content">
+      <a href="index.html" class="nav-link">на главную</a>
+      <span class="nav-title">проект: снедь</span>
+      <hr class="nav-line">
+      <a href="#" class="nav-link js-next-project">дальше</a>
+    </div>
+  </nav>
+
+  <main class="project-main sned-main">
+    <section class="sned-hero">
+      <div class="sned-hero-text">
+        <h1 class="sned-title">СНЕДЬ<br>История русской кухни</h1>
+      </div>
+      <div class="sned-hero-pa"> <p>
+          Многополосное издание, посвященное самым неожиданным фактам
+          о происхождении обычной <br> и родной для нас еды.
+        </p> </div>
+       
+          <div class="sned-hero-par"> <p>
+          Содержание поделено на четыре разноформатных раздела,
+          каждый из которых обозначает привычный <br> для нас прием пищи:
+          утром, днем и вечером.
+        </p></div>
+
+      <div class="sned-hero-cover">
+        <img src=https://res.cloudinary.com/dn48h6rt6/image/upload/cover.webp alt="Обложка книги СНЕДЬ">
+      </div>
+    </section>
+
+    <section class="sned-layout-flow" aria-label="Макет проекта СНЕДЬ">
+  <div class="sned-frame sned-frame--zavtrak">
+    <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/zavtrak.webp" alt="Разворот раздела Завтрак" class="sned-layout-image">
+    <div class="sned-label label-right">
+      <span class="sned-num">1.</span>
+      <span class="sned-desc">Раздел Завтрак</span>
+    </div>
+  </div>
+
+  <div class="sned-frame sned-frame--obed">
+    <div class="sned-label label-left">
+      <span class="sned-num">2.</span>
+      <span class="sned-desc">Раздел Обед</span>
+    </div>
+    <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/obed.webp" alt="Разворот раздела Обед" class="sned-layout-image">
+  </div>
+
+  <div class="sned-frame sned-frame--uzin">
+    <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/uzin.webp" alt="Разворот раздела Ужин" class="sned-layout-image">
+    <div class="sned-label label-right">
+      <span class="sned-num">3.</span>
+      <span class="sned-desc">Раздел Ужин</span>
+    </div>
+  </div>
+
+  <div class="sned-frame sned-frame--kchayu">
+    <div class="sned-label label-left">
+      <span class="sned-num">4.</span>
+      <span class="sned-desc">Раздел К чаю</span>
+    </div>
+    <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/kchayu.webp" alt="Разворот раздела К чаю" class="sned-layout-image">
+  </div>
+
+  <div class="sned-frame">
+    <img src="https://res.cloudinary.com/dn48h6rt6/image/upload/bookphotos.webp" alt="Фотографии книги СНЕДЬ" class="sned-layout-image">
+  </div>
+</section>
+  </main>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Список всех страниц в том порядке, в котором они идут в твоем меню
+    const projectOrder = [
+        'posters.html',      // плакаты
+        'nomad-voice.html',  // голос кочевников
+        'chtetsky.html',     // чтецкий вечер
+        'intensive.html',    // интенсив вшм+втб
+        'smmvtb.html',       // для втб (коммуникации)
+        'sputnik.html',      // спутник
+        'sned.html',         // снедь
+        'tripguide.html',    // путеводитель
+        '3d.html',           // пак для втб (3D)
+      
+        'motion.html',       // моушн
+        'photo.html'         // фото
+    ];
+
+    // Получаем имя текущего файла (например, 'sned.html')
+    const currentPath = window.location.pathname.split("/").pop();
+    
+    // Находим индекс текущей страницы в массиве
+    const currentIndex = projectOrder.indexOf(currentPath);
+    const nextButton = document.querySelector('.js-next-project');
+
+    if (nextButton && currentIndex !== -1) {
+        // Если это не последний проект в списке
+        if (currentIndex < projectOrder.length - 1) {
+            nextButton.href = projectOrder[currentIndex + 1];
+        } else {
+            // Если проект последний (фото), кнопка ведет на главную
+            nextButton.href = 'index.html';
+            nextButton.textContent = 'на главную'; 
+        }
+    }
+});
+</script>
+</body>
+</html>
