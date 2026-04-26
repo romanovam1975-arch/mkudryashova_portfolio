@@ -1515,7 +1515,7 @@ li::before, li::after {
   /* ТЕКСТ */
   .texthead {
     position: relative !important; /* Меняем absolute на relative, чтобы он шел первым */
-    width: 60% !important;
+    width: 90% !important;
     top: 20px !important;
     left: 5px !important;
     margin-bottom: 50px !important;
@@ -1773,7 +1773,7 @@ li::before, li::after {
 
   /* Заголовок (SVG) на мобильном */
   .titletrip-svg {
-    width: 250% !important;
+    width: 200% !important;
     margin-bottom: -400px;
     margin-left: 620px;
   }
