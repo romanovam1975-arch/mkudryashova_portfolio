@@ -135,7 +135,7 @@ h1 {
   align-items: center;
   width: fit-content;
   padding: 0.06em 0.4em 0.12em;
-  border: 1pt solid currentColor;
+  border: 3pt solid currentColor;
   border-radius: 999px;
   background-color: #fff;
   font-size: 44px;
@@ -156,6 +156,8 @@ h1 {
   appearance: none;
   -webkit-appearance: none;
   margin: 0;
+    border: 3pt solid currentColor;
+  border-radius: 999px;
   font-family: 'Omega UI', sans-serif;
   font-size: 44px;
   line-height: 1.02;
