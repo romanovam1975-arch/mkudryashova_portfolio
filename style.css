@@ -119,6 +119,7 @@ h1 {
 .project-list {
   display: flex;
   flex-direction: column;
+  gap: 6px;
   line-height: 0.98;
 }
 
@@ -130,13 +131,17 @@ h1 {
 /* ЖАНРЫ (верхний уровень) */
 
 .project-link {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 0.06em 0.4em 0.12em;
+  border: 3px solid currentColor;
+  border-radius: 999px;
+  background-color: #fff;
   font-size: 44px;
   line-height: 1;
   color: #000;
-  text-decoration: underline;
-  text-underline-offset: 0.12em;
-  text-decoration-thickness: 3px;
+  text-decoration: none;
 }
 
 /* УБИРАЕМ СИНИЙ HOVER У ЖАНРОВ */
@@ -145,24 +150,16 @@ h1 {
   color: #000;
 }
 
-/* КНОПКА (чтобы выглядела как текст) */
+/* КНОПКА-РАЗДЕЛ */
 
 .project-toggle {
   appearance: none;
   -webkit-appearance: none;
-  background: none;
-  border: none;
-  padding: 0;
   margin: 0;
-  display: inline-block;
   font-family: 'Omega UI', sans-serif;
   font-size: 44px;
   line-height: 1.02;
-  color: #000;
   text-align: left;
-  text-decoration: underline;
-  text-underline-offset: 0.12em;
-  text-decoration-thickness: 3px;
   cursor: pointer;
 }
 /* ВЫПАДАЮЩИЙ СПИСОК */
