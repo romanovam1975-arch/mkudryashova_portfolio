@@ -1,0 +1,26 @@
+:root{--text-small:1rem;--text-medium:1.75rem;--text-large:4rem;--secondary:#666}
+body{font-size:var(--text-small);line-height:1.4}
+*,*::before,*::after{font-size:inherit}
+h1,h2,h3,p{font-weight:400}
+h1,.intro h1,.case-intro h1,.description-text,.statement,.contact-title,.info-years,.summary-heading h2{font-size:var(--text-large);line-height:1.08;letter-spacing:-.025em}
+h2,h3,.info-label,.solution-flow li,.case-navigation a{font-size:var(--text-medium);line-height:1.2;letter-spacing:-.015em}
+.category,.number,.case-meta,.tools,.eyebrow,.section-heading>span,.footer-bottom>span,.cv-nav>span,.solution-flow li>span,.case-navigation a>span{font-size:var(--text-small);color:var(--secondary);line-height:1.4}
+.summary-details h3,.summary-heading>p,.summary-details p,.bio,.info-content,.header-contacts,.header-behance,.cv-button,.intro-top p,.intro-bottom p,.skills span,.footer-bottom,.footer,.cv-nav,.back,.view{font-size:var(--text-small);line-height:1.4;letter-spacing:0}
+.summary-details h3{color:var(--secondary)}.info-content strong{font-weight:600;font-size:inherit}
+a:not(.project):not(.skip),.view{box-sizing:border-box;border:1px solid currentColor;border-radius:999px;padding:9px 18px;min-height:44px;max-width:100%;text-decoration:none;overflow-wrap:anywhere}
+a:not(.project):not(.skip){display:inline-flex;align-items:center;justify-content:center;gap:12px}
+a:not(.project):not(.skip):hover{background:#000;color:#fff;text-decoration:none}
+.site-header a{padding:9px 18px;border:1px solid currentColor;border-radius:999px;line-height:1.4;min-height:44px}
+.site-header .cv-button{padding:9px 18px;white-space:nowrap;min-width:60px}
+.header-contacts{gap:8px;align-items:flex-start}.header-right{gap:24px;align-items:flex-end}.header-behance{align-self:flex-end}
+.contact-title{width:fit-content;margin-bottom:44px;justify-content:space-between;gap:32px!important;padding:16px 28px!important}
+.contact-title:hover span{color:inherit}.case-navigation a{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;border-radius:28px;padding:20px 24px;text-align:left}.case-navigation a:last-child{align-items:flex-end;text-align:right}.case-navigation a>span{margin:0 0 8px}.case-navigation a:hover>span{color:#ccc}
+.footer-bottom{align-items:center}.footer a{width:fit-content}.intro-bottom a{border-radius:999px}.intro h1{min-height:230px}.portrait{top:0}.cv-nav{justify-content:flex-end}.info-years{line-height:1.05}.view{background:white}.project:focus-visible .view,.project:hover .view{color:#000}
+@media(max-width:700px){:root{--text-medium:1.5rem;--text-large:2.25rem}.site-header{flex-wrap:wrap;gap:16px}.header-right{flex:1 1 240px;gap:12px;justify-content:flex-end}.header-contacts{width:100%;align-items:flex-end}.header-contacts a{padding:9px 12px}.intro h1{min-height:150px;margin-top:64px}.portrait{top:-45px}.case-navigation{grid-template-columns:1fr}.case-navigation a:last-child{align-items:flex-start;text-align:left}.contact-title{padding:12px 20px!important}.footer-bottom{display:flex;flex-wrap:wrap}.footer-email,.footer-tg{min-width:0}.info-years{margin-top:16px}}
+
+/* Plain contact links; outlined navigation and skill labels. */
+:is(.header-right,footer) a:not(.project):not(.skip){border:0;border-radius:0;padding:0!important;min-height:0;background:transparent;color:inherit}
+:is(.header-right,footer) a:not(.project):not(.skip):hover{background:transparent;color:inherit;text-decoration:underline;text-underline-offset:4px}
+.header-contacts{gap:2px}.header-right{align-items:last baseline}.header-behance{align-self:auto}
+.skills span{display:inline-flex;align-items:center;border:1px solid #aaa;border-radius:999px;padding:7px 14px}.skills{gap:8px}
+.art img{width:100%;height:100%;object-fit:cover;object-position:center}
