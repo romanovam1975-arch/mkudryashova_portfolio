@@ -1,0 +1,9 @@
+@media(max-width:700px){
+body .site-header,body.home-page .site-header{display:flex;flex-wrap:nowrap;align-items:center;justify-content:space-between;gap:8px;min-height:76px;padding:16px 4%;width:100%;box-sizing:border-box}
+body .site-header a{font-size:.75rem;line-height:1.25;letter-spacing:0}
+body .site-header .cv-button,body.home-page .site-header .cv-button{flex:0 0 auto;min-width:0;min-height:36px;padding:8px 10px;white-space:nowrap}
+body .site-header .header-right,body.home-page .site-header .header-right{display:flex;flex-direction:column;flex-wrap:nowrap;align-items:flex-end;justify-content:center;gap:3px;flex:0 1 auto;min-width:0}
+body .site-header .header-contacts,body.home-page .site-header .header-contacts{display:flex;flex-direction:column;flex-wrap:nowrap;align-items:flex-end;gap:3px;width:auto;min-width:0}
+body .site-header .header-contacts a{white-space:nowrap;overflow-wrap:normal}
+body .site-header .header-behance{align-self:flex-end}
+}

@@ -1,0 +1,15 @@
+
+/* Higher specificity than the general outlined-link rule. */
+.case-navigation a:not(.project):not(.skip){border:0;border-radius:0;box-shadow:none;padding:20px 0;background:transparent;color:inherit}
+.case-navigation a:not(.project):not(.skip):hover{background:transparent;color:inherit;text-decoration:underline;text-underline-offset:5px}
+.case-gallery.vtb-gallery{margin-left:4.5%;margin-right:4.5%;gap:100px}
+.case-gallery.vtb-gallery img{width:100%;height:auto;object-fit:contain}
+.case-gallery.posters-gallery{gap:100px}
+.sned-title-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(160px,28%);align-items:center;gap:48px}
+.case-intro .sned-title-row h1{margin:0}
+.sned-title-cover{display:block;width:100%;max-width:280px;height:auto;justify-self:end}
+@media(max-width:700px){.case-gallery.vtb-gallery{margin-left:6%;margin-right:6%;gap:56px}.case-gallery.posters-gallery{gap:56px}.sned-title-row{grid-template-columns:minmax(0,1fr) 32%;gap:20px}.sned-title-cover{max-width:180px}}
+
+.case-gallery.travel-gallery{display:flex;flex-direction:column;gap:100px;margin-left:4.5%;margin-right:4.5%}
+.case-gallery.travel-gallery img{display:block;width:100%;max-width:none;height:auto;object-fit:contain}
+@media(max-width:700px){.case-gallery.travel-gallery{margin-left:6%;margin-right:6%;gap:56px}}
