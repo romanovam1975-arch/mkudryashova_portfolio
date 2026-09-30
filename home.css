@@ -1,4 +1,13 @@
 .home-page{--text-large:2.75rem}
+/* Keep each project caption attached to its own preview. */
+.home-page .grid{row-gap:64px;align-items:start}
+.home-page .project{display:block}
+.home-page .project .caption{border:0;margin-top:0;padding-top:12px;gap:16px;align-items:baseline}
+.home-page .caption>div{display:flex;flex-direction:column;min-width:0}
+.home-page .caption h3{margin:0;line-height:1.2}
+.home-page .caption .category{order:1;margin:5px 0 0}
+.home-page .caption .number{padding:0;flex-shrink:0}
+@media(max-width:700px){.home-page .grid{row-gap:52px}.home-page .project .caption{padding-top:10px}.home-page .caption .category{margin-top:4px}}
 .home-page .site-header{border:0;min-height:108px;padding-top:30px;padding-bottom:26px}
 .home-page .site-header .cv-button{background:#414141;color:white;border-color:#414141;padding:10px 16px;min-height:50px}
 .home-page .site-header .cv-button:hover{background:#000;border-color:#000}
