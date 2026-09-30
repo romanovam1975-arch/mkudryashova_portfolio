@@ -1,0 +1,9 @@
+/* Shared contact footer on the homepage, CV and every case. */
+body footer.contact-footer{display:block;width:100%;max-width:none;margin:0;padding:54px 0;background:#000;color:#fff;border:0;box-sizing:border-box}
+.contact-footer .contact-footer-inner{max-width:1600px;margin:0 auto;padding:0 4.5%;box-sizing:border-box}
+.contact-footer .eyebrow{margin:0 0 22px;font-size:1rem;line-height:1.4;color:#fff;font-weight:400}
+body .contact-footer a.contact-title:not(.project):not(.skip){display:inline-flex;align-items:center;justify-content:flex-start;gap:32px!important;width:fit-content;max-width:100%;min-height:0;margin:0;padding:0!important;border:0;border-radius:0;background:transparent;color:#fff;font-size:4rem;line-height:1.08;font-weight:400;letter-spacing:-.025em;text-decoration:none}
+.contact-footer .contact-title span{color:inherit;font-family:Arial,Helvetica,sans-serif}
+body .contact-footer a.contact-title:hover{background:transparent;color:#fff;text-decoration:underline;text-underline-offset:8px}
+.contact-footer a:focus-visible{outline:2px solid #fff;outline-offset:8px}
+@media(max-width:700px){body footer.contact-footer{padding:35px 0}.contact-footer .contact-footer-inner{padding:0 6%}.contact-footer .eyebrow{margin-bottom:22px}body .contact-footer a.contact-title:not(.project):not(.skip){font-size:clamp(1.75rem,8.5vw,2.25rem);gap:20px!important}}
