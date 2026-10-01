@@ -27,3 +27,7 @@
 .home-page .project[href="/mkudryashova_portfolio/projects/248407587.html"] .art img{transform:scale(1.75);transform-origin:70% 55%}
 .home-page .project[href="/mkudryashova_portfolio/projects/248407587.html"]:hover .art img{transform:scale(1.78)}
 @media(max-width:700px){.home-page{--text-large:2.25rem}.home-page .site-header{padding:22px 6%;gap:20px}.home-page .header-right{flex:1 1 240px}.home-page .header-contacts{flex-wrap:wrap;justify-content:flex-end;gap:8px 24px}.home-page .intro{padding-top:20px}.home-hero{grid-template-columns:minmax(100px,30%) minmax(0,1fr);gap:18px}.home-photo{align-self:start}.home-copy{gap:24px}.home-page .intro h1{font-size:var(--text-medium);line-height:1.08}.home-clients{font-size:var(--text-small)}.home-page .intro-bottom{margin-top:48px;gap:18px}.home-page .intro-bottom a{width:48px;height:48px;min-width:48px}}
+
+/* Preserve the former intro navigation area as empty white space. */
+.home-page .intro-spacer{height:114px;margin-top:90px;background:#fff}
+@media(max-width:700px){.home-page .intro-spacer{height:98px;margin-top:48px}}
