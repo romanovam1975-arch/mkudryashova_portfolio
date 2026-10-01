@@ -7,3 +7,11 @@ body .site-header .header-contacts,body.home-page .site-header .header-contacts{
 body .site-header .header-contacts a{white-space:nowrap;overflow-wrap:normal}
 body .site-header .header-behance{align-self:flex-end}
 }
+/* Align homepage contacts with the name column in the mobile hero. */
+@media(max-width:700px){
+body.home-page .site-header{display:grid;grid-template-columns:minmax(100px,30%) minmax(0,1fr);column-gap:18px;padding-left:6%;padding-right:6%}
+body.home-page .site-header .cv-button{justify-self:start}
+body.home-page .site-header .header-right{width:100%;align-items:flex-start}
+body.home-page .site-header .header-contacts{width:100%;align-items:flex-start;text-align:left}
+body.home-page .site-header .header-contacts a{font-size:clamp(.5rem,2.7vw,.75rem);justify-content:flex-start}
+}
