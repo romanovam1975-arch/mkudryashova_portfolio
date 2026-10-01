@@ -6,3 +6,9 @@
 #cv-target{position:absolute;top:0}
 
 @media(min-width:761px){.description-section>.p5-stage,.description-section>.description-text{grid-row:1}}
+
+/* Full-width introductory p5 animation. */
+.cv-page .description-section{display:block;min-height:0;padding:25px 0 45px}
+.cv-page .description-section .p5-stage{width:100%;max-width:none;margin:0}
+.cv-page #p5-container{width:100%;aspect-ratio:auto}
+.cv-page #p5-container canvas{width:100%!important;height:auto!important}

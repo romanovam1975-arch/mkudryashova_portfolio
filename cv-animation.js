@@ -13,7 +13,11 @@ function preload() {
 }
 
 function setup() {
-  canvas = createCanvas(300, 175, WEBGL);
+  const w = document.getElementById("p5-container").clientWidth;
+  canvas = createCanvas(w, Math.min(w * .48, 620), WEBGL);
+  radius = Math.min(w * .3, height * .55);
+  fontSize = radius / 9;
+  pixelDensity(Math.min(window.devicePixelRatio || 1, 2));
   canvas.parent('p5-container');
 
   canvas.mouseOver(() => {
@@ -82,4 +86,9 @@ function mousePressed() {
 
 function mouseReleased() {
   dragging = false;
+}
+function windowResized() {
+ const w=document.getElementById('p5-container').clientWidth;
+ resizeCanvas(w,Math.min(w*.48,620));
+ radius=Math.min(w*.3,height*.55);fontSize=radius/9;textSize(fontSize);redraw();
 }

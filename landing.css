@@ -20,18 +20,23 @@
 .landing-page a.gallery-link:hover{color:var(--landing-paper);background:#000}
 .landing-page #works{max-width:1600px;margin:auto;padding-top:70px;background:var(--landing-paper)}
 .landing-page .grid{row-gap:64px;align-items:start}.landing-page .project{display:block}.landing-page .project .caption{border:0;margin:0;padding-top:12px;gap:16px;align-items:baseline}.landing-page .caption h3{margin:0;line-height:1.2}.landing-page .caption .number{padding:0;flex-shrink:0}
+
+.mobile-statement{display:none}
+.orbit-area{top:45.7%;z-index:2}
+.landing-page a.gallery-link{left:57%;z-index:3}
 @media(max-width:700px){
-.landing-stage{aspect-ratio:auto;height:780px;max-height:none}
-.landing-page .landing-header{inset:16px 5% auto;gap:12px;align-items:flex-start}
-.landing-page .landing-header .landing-cv{font-size:16px;padding:7px 13px;border-width:1.5px}
-.landing-contacts{flex-direction:column;align-items:flex-start;gap:5px;font-size:clamp(10px,2.8vw,14px)}
-.landing-portrait{left:5%;top:100px;width:21%}
-.landing-page .landing-stage h1{left:31%;top:101px;font-size:clamp(16px,3.8vw,24px);line-height:1.03}
-.landing-statement{left:5%;top:230px;width:90%}
-.orbit-area{left:0;top:350px;width:100%;height:310px;perspective:1000px;--card-width:17cqw;--card-height:21cqw;--radius:38cqw}
-.landing-page a.orbit-card{border-radius:3cqw}
-.landing-page a.gallery-link{left:auto;right:5%;top:695px;font-size:32px;padding:0 12px 2px}
-.orbit-pause{opacity:1;bottom:0;width:28px;height:28px;font-size:13px}
-.landing-page #works{padding-top:32px}.landing-page .grid{row-gap:52px}.landing-page .project .caption{padding-top:10px}
+.landing-stage{aspect-ratio:815/1660;height:auto;min-height:0}
+.landing-page .landing-header{inset:3.2cqw 3.4cqw auto;gap:12px;align-items:flex-start}
+.landing-page .landing-header .landing-cv{font-size:2.5cqw;padding:1.1cqw 2.4cqw;border-width:1.5px}
+.landing-contacts{flex-direction:column;align-items:flex-start;gap:.65cqw;font-size:clamp(6px,1.25cqw,10px)}
+.landing-portrait{left:2.45%;top:13.86cqw;width:23.31%;height:auto}
+.landing-page .landing-stage h1{left:27.4%;top:14.1cqw;font-size:2.5cqw;line-height:1.03}
+.desktop-statement{display:none}
+.mobile-statement{display:block;position:absolute;left:0;top:43.7cqw;width:100%;aspect-ratio:1223/663;overflow:hidden}
+.mobile-statement img{position:absolute;width:100%;max-width:none;left:0;top:-25.339%;height:auto}
+.orbit-area{left:15%;top:113cqw;width:70%;height:47cqw;perspective:1000px;--card-width:12cqw;--card-height:15cqw;--radius:28cqw}
+.landing-page a.orbit-card{border-radius:2.3cqw}
+.landing-page a.gallery-link{left:50%;right:auto;top:168.5cqw;transform:translateX(-50%);font-size:7.36cqw;padding:0 2.5cqw .2cqw;border-width:2px}
+.orbit-pause{bottom:-2cqw;width:24px;height:24px;font-size:12px}
 }
 @media(prefers-reduced-motion:reduce){.orbit-pause{display:none}}
