@@ -55,3 +55,15 @@ body.project-page{background:#f5f5f5;font-family:Arial,Helvetica,sans-serif;colo
 body .unified-header .header-back:not(.project):not(.skip){display:block;width:13%;max-width:190px;min-width:65px}
 .header-back img{display:block;width:100%;height:auto;transform:scaleX(-1)}
 @media(max-width:700px){.project-146111593 .case-gallery,.project-page .case-gallery.posters-gallery{margin-left:6%;margin-right:6%}}
+/* One spacing system for all case galleries, including specialised layouts. */
+body.project-page .case-gallery[class]{box-sizing:border-box;margin:0 4.5% 0;padding:clamp(24px,3vw,48px) 0 clamp(60px,7vw,110px);gap:clamp(48px,6.5vw,104px)}
+body.project-page .case-gallery-pair{gap:clamp(24px,3vw,48px)}
+body.project-page .case-gallery iframe{margin:0}
+body.project-page .case-gallery img.social-screenshot{width:45%;max-width:440px;height:auto;align-self:center;object-fit:contain}
+body.project-page .case-gallery img.social-collection{width:80%;height:auto;align-self:center;object-fit:contain}
+@media(max-width:700px){
+ body.project-page .case-gallery[class]{margin-left:6%;margin-right:6%;padding-top:24px;padding-bottom:64px;gap:48px}
+ body.project-page .case-gallery-pair{gap:20px}
+ body.project-page .case-gallery img.social-screenshot{width:78%;max-width:340px}
+ body.project-page .case-gallery img.social-collection{width:90%}
+}
