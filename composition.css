@@ -29,3 +29,7 @@
 .landing-page a.home-cv{width:6.55%;height:6.55cqw;border-radius:50%}
 .landing-page a.gallery-link{border-radius:0}
 @media(max-width:700px){.landing-page a.home-cv{width:14%;height:14cqw}}
+/* A shallower ring with gentler perspective. */
+.landing-page .orbit-tilt{transform:rotateX(-24deg)}
+.landing-page .orbit-area{perspective:140cqw}
+@media(max-width:700px){.landing-page .orbit-area{perspective:1500px}}
