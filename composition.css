@@ -33,3 +33,4 @@
 .landing-page .orbit-tilt{transform:rotateX(-24deg)}
 .landing-page .orbit-area{perspective:140cqw}
 @media(max-width:700px){.landing-page .orbit-area{perspective:1500px}}
+@media(min-width:701px){.landing-page .orbit-area{top:34.2cqw}}
