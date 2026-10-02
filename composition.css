@@ -46,3 +46,11 @@
  .landing-page a.home-cv{left:27.4%;width:10%}
  .landing-page a.gallery-link{left:42%;width:27%}
 }
+/* Mobile actions sit near the bottom, aligned to the page margins. */
+@media(max-width:700px){
+ .landing-page .landing-stage{aspect-ratio:auto;height:max(100svh,160cqw);min-height:0}
+ .landing-page .orbit-area{top:94cqw}
+ .landing-page a.home-action{top:auto;bottom:max(5cqw,env(safe-area-inset-bottom));height:12cqw;font-size:6cqw}
+ .landing-page a.home-cv{left:3%;right:auto;width:12%}
+ .landing-page a.gallery-link{left:auto;right:3%;width:33%}
+}
