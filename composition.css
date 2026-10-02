@@ -34,3 +34,15 @@
 .landing-page .orbit-area{perspective:140cqw}
 @media(max-width:700px){.landing-page .orbit-area{perspective:1500px}}
 @media(min-width:701px){.landing-page .orbit-area{top:34.2cqw}}
+/* Match the outline weight in the supplied statement artwork. */
+.landing-page a.home-action{border-width:clamp(1px,.21cqw,4px)}
+@media(max-width:700px){
+ .landing-page .landing-stage{aspect-ratio:815/1400}
+ .landing-page .landing-portrait{top:1.5cqw}
+ .landing-page .landing-stage h1{top:1.5cqw}
+ .landing-page .mobile-statement{top:35.2cqw}
+ .landing-page .orbit-area{left:13.25%;top:99cqw;width:73.5%;height:49.35cqw;--card-width:12.6cqw;--card-height:15.75cqw;--radius:29.4cqw}
+ .landing-page a.home-action{top:16cqw;height:10cqw;font-size:5cqw;border-width:max(1px,.37cqw)}
+ .landing-page a.home-cv{left:27.4%;width:10%}
+ .landing-page a.gallery-link{left:42%;width:27%}
+}

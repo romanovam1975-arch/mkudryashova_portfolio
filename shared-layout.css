@@ -50,3 +50,8 @@ body.project-page{background:#f5f5f5;font-family:Arial,Helvetica,sans-serif;colo
 .cv-return{margin:16px 1.5% 25px}
 .cv-return a{display:block;width:100px}
 .cv-return img{display:block;width:100%;height:auto;transform:scaleX(-1)}
+/* Keep poster presentations inside the same side margins as other galleries. */
+.project-146111593 .case-gallery,.project-page .case-gallery.posters-gallery{margin-left:4.5%;margin-right:4.5%}
+body .unified-header .header-back:not(.project):not(.skip){display:block;width:13%;max-width:190px;min-width:65px}
+.header-back img{display:block;width:100%;height:auto;transform:scaleX(-1)}
+@media(max-width:700px){.project-146111593 .case-gallery,.project-page .case-gallery.posters-gallery{margin-left:6%;margin-right:6%}}
