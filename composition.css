@@ -54,3 +54,6 @@
  .landing-page a.home-cv{left:3%;right:auto;width:12%}
  .landing-page a.gallery-link{left:auto;right:3%;width:33%}
 }
+.landing-page a.home-action{border-width:var(--outline-width)}
+.landing-page a.gallery-link{height:4.6cqw;top:48.225cqw}
+@media(max-width:700px){.landing-page a.gallery-link{height:9cqw;top:auto}}

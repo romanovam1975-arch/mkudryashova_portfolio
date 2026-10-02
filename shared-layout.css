@@ -71,3 +71,30 @@ body.project-page .case-gallery img.social-collection{width:80%;height:auto;alig
 body.project-page .case-gallery[class]{padding-top:0;padding-bottom:0;gap:0}
 body.project-page .case-gallery[class]>*{margin-top:30px;margin-bottom:30px}
 body.project-page .case-gallery iframe.portrait-video{width:min(100%,calc(80svh * var(--video-ratio)));height:auto;aspect-ratio:var(--video-ratio);align-self:center;background:transparent}
+:root{--outline-width:clamp(1px,.21vw,4px)}
+.project-note,.project-index,.skills span,.orbit-pause{border-width:var(--outline-width)}
+.nav-arrow-art{display:block;width:100%;height:auto;overflow:visible;fill:none;stroke:currentColor;stroke-width:var(--outline-width);vector-effect:non-scaling-stroke}
+.nav-arrow-art path{vector-effect:non-scaling-stroke}
+.project-back .nav-arrow-art,.gallery-back .nav-arrow-art,.header-back .nav-arrow-art{transform:scaleX(-1)}
+.project-page .project-arrows a:not(.project):not(.skip),body .unified-header .header-back:not(.project):not(.skip){width:11.5%;max-width:165px;min-width:60px}
+.gallery-back{width:11.5%;max-width:165px}
+body.project-page .case-gallery .social-pair{display:flex;justify-content:center;align-items:flex-start;gap:30px}
+body.project-page .case-gallery .social-pair img.social-screenshot{width:22.5%;max-width:220px;align-self:flex-start}
+.banner-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;align-items:start}
+body.project-page .case-gallery .banner-row img{width:100%;height:auto}
+body.project-page.project-248404821 .case-gallery{padding-top:0}
+body.project-page.project-248404821 .case-gallery .per-programme{width:109.89011%;margin-left:-4.945055%;aspect-ratio:3099/3250;overflow:hidden;margin-top:0;margin-bottom:15px}
+body.project-page.project-248404821 .per-programme img{width:100%;height:auto}
+body.project-page.project-248404821 .case-gallery>img{width:100%;margin-top:15px;align-self:center}
+body.project-page .case-gallery .bleed-both{width:109.89011%;max-width:none;margin-left:-4.945055%}
+body.project-page .case-gallery .bleed-left{width:104.945055%;max-width:none;margin-left:-4.945055%}
+body.project-page .case-gallery .bleed-right{width:104.945055%;max-width:none;align-self:flex-start}
+@media(max-width:700px){
+ :root{--outline-width:max(1px,.37vw)}
+ .banner-row{gap:12px}
+ body.project-page .case-gallery .social-pair{gap:20px}
+ body.project-page .case-gallery .social-pair img.social-screenshot{width:39%;max-width:170px}
+ body.project-page .case-gallery .bleed-both,body.project-page.project-248404821 .case-gallery .per-programme{width:113.636364%;margin-left:-6.818182%}
+ body.project-page .case-gallery .bleed-left{width:106.818182%;margin-left:-6.818182%}
+ body.project-page .case-gallery .bleed-right{width:106.818182%}
+}
